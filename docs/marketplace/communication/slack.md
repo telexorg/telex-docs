@@ -1,4 +1,4 @@
-# Slack Integration Documentation
+# Slack Integration
 
 ## Overview
 
