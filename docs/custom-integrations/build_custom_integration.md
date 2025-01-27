@@ -71,7 +71,7 @@ These imports allow us to handle HTTP requests, encode and decode JSON, log mess
 
 ### Defining the Data Structure
 
-We’ll define a struct to represent the incoming message payload from Telex:
+We’ll define a struct to represent the incoming message payload from Telex [Note: This is the format to which all incoming messages from Telex conform]:
 
 ```go
 // Message represents the incoming payload structure
@@ -193,9 +193,81 @@ You should see a message indicating the server is running.
 
 1. Go to the **Integrations** section in Telex.
 2. Create a new **outbound** integration.
-3. Set the **URL** to `http://your-server-url/format-message`.
-4. Activate the integration.
+3. Provide a url containing the JSON configuration for the integration.
+4. Save the integration and as well retreive the url of the channel webhook.
 
+A sample format of an integration should appear as such
+
+```json
+{
+  "date": {
+    "created_at": "2025-01-27",
+    "updated_at": "2025-01-27"
+  },
+  "descriptions": {
+    "app_description": "A message formatter bot that processes incoming messages and sends back formatted responses.",
+    "app_logo": "https://example.com/message-formatter-logo.png",
+    "app_name": "Message Formatter",
+    "app_url": "https://example.com/message-formatter",
+    "background_color": "#0000FF"
+  },
+  "target_url": "https://system-integration.telex.im/messageformatter",
+  "permissions": {
+    "bot_user": {
+      "always_online": true,
+      "display_name": "Message Formatter Bot"
+    },
+    "events": [
+      "Receive messages from Telex channels.",
+      "Format messages based on predefined templates or logic.",
+      "Send formatted responses back to the channel.",
+      "Log message formatting activity for auditing purposes."
+    ]
+  },
+  "settings": [
+    {
+      "label": "responseTemplate",
+      "type": "textarea",
+      "description": "Define the template for formatting messages.",
+      "required": True,
+      "default": "Hello, {{username}}! You said: {{message}}"
+    },
+    {
+      "label": "enableLogging",
+      "type": "checkbox",
+      "description": "Enable logging of all formatted messages.",
+      "default": "Yes",
+      "required": True
+    },
+    {
+      "label": "maxMessageLength",
+      "type": "number",
+      "description": "Set the maximum length for incoming messages to format.",
+      "default": 500,
+      "required": True
+    },
+    {
+      "label": "notifyOnError",
+      "type": "checkbox",
+      "description": "Notify admins if a formatting error occurs.",
+      "default": "No",
+      "required": True
+    }
+  ],
+  "output": [
+    {
+      "label": "all_channels",
+      "value": True
+    },
+    {
+      "label": "custom_channels",
+      "value": False
+    }
+  ],
+  "is_active": True
+}
+```
+- Setting the target url is very important as it is the endpoint that the Telex channel will send messages to.
 ---
 
 ## Testing the Integration
