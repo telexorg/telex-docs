@@ -212,11 +212,6 @@ A sample format of an integration should appear as such
     "background_color": "#0000FF"
   },
   "target_url": "https://system-integration.telex.im/messageformatter",
-  "permissions": {
-    "bot_user": {
-      "always_online": true,
-      "display_name": "Message Formatter Bot"
-    },
     "events": [
       "Receive messages from Telex channels.",
       "Format messages based on predefined templates or logic.",
@@ -252,16 +247,6 @@ A sample format of an integration should appear as such
       "description": "Notify admins if a formatting error occurs.",
       "default": "No",
       "required": True
-    }
-  ],
-  "output": [
-    {
-      "label": "all_channels",
-      "value": True
-    },
-    {
-      "label": "custom_channels",
-      "value": False
     }
   ],
   "is_active": True

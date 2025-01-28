@@ -12,7 +12,6 @@ To create a custom integration on Telex, you must set up the integration on your
 
 During the integration setup, you need to send a JSON configuration object to the Telex server:
 
-Here’s the updated JSON configuration object with the new settings field:
 
 ````json
 {
@@ -46,16 +45,10 @@ Here’s the updated JSON configuration object with the new settings field:
             "Feature description 4."
         ],
         "permissions": {
-            "bot_user": {
-                "always_online": false,
-                "display_name": "Display name of the bot user"
-            },
-            "events": [
-                "Event description 1.",
-                "Event description 2.",
-                "Event description 3.",
-                "Event description 4."
-            ]
+            "monitoring_user": {
+                "always_online": true,
+                "display_name": "Performance Monitor"
+            }
         },
         "settings": [
             {
@@ -164,14 +157,14 @@ There are two supported methods for sending data to Telex:
    https://ping.telex.im/v1/webhooks/c83b4d52fdf5?event_name=test&message=test_webhook_url&status=success&username=collins
    ```
 
+   You can set the query parameters value to your desired data values. For example, `event_name=deployments`, `message=Deployment successful`, `status=success`, and `username=collins`.
+
 2. **Using JSON in the Request Body**
    - Data is sent as a JSON object in the body of a POST request.
 
    **Example:**
    ```json
    {
-     "channel_id": "c83b4d52fdf5",
-     "webhook_slug": "test_webhook_url",
      "action_type": "create",
      "status_code": "200",
      "event_name": "test",
@@ -180,12 +173,10 @@ There are two supported methods for sending data to Telex:
      "status": "success",
      "avatar_url": "https://example.com/avatar.jpg",
      "message": "This is a test message",
-     "user_id": "user123",
-     "org_id": "org456"
    }
    ```
 
-   Required fields: `channel_id`, `webhook_slug`, `action_type`, `status_code`, `event_name`, `username`, `status`, `message`, `user_id`, and `org_id`. Additional fields are optional.
+   Required fields: `status_code`, `event_name`, `username`, `status`, `message`. Additional fields are optional.
 
 To receive data into Telex, specify the channels where the data will appear:
 
