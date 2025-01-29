@@ -18,5 +18,5 @@ Telex is designed with flexibility and scalability in mind. Whether you are a sm
 
 ### Explore the Documentation
 
-Dive into the sections below to explore the functionalities offered by the Telex API. Each section provides detailed information on specific endpoints, including how to create, retrieve, update, and delete resources.
+Dive into the sections below to explore the functionalities offered by the Telex API. Each section provides detailed information on specific endpoints, including how to create, retrieve, update, and delete resources
 
