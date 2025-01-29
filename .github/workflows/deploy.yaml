@@ -1,0 +1,27 @@
+name: Deploy Telex Docs - main
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_telex_docs_main:
+    runs-on: ubuntu-latest
+    if: github.event.repository.fork == false
+
+    steps:
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.TELEX_SERVER_SSH_HOST }}
+          username: ${{ secrets.TELEX_SERVER_SSH_USER }}
+          password: ${{ secrets.TELEX_SERVER_SSH_PASSWORD }}
+          script: |
+            cd /var/www/telex-docs
+            git reset --hard
+            git pull origin main
+            npm install
+            npm run build
+            supervisorctl restart telex_docs
