@@ -22,6 +22,6 @@ jobs:
             cd /var/www/telex-docs
             git reset --hard
             git pull origin main
-            npm install
-            npm run build
+            pnpm install
+            pnpm run build
             supervisorctl restart telex_docs
