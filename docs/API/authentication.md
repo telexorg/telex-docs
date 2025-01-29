@@ -9,16 +9,18 @@ The API supports features like OAuth integration, onboarding status tracking, an
 
 ## Authentication Endpoints
 
-## Base URL - 
 
-### production - `https://api.telex.im/api/v1/` 
+```
+Base URL
 
-### staging - `https://api.staging.telex.im/api/v1/`
+production - `https://api.telex.im/api/v1/` 
 
-### 1. **Register a New User**
+staging - `https://api.staging.telex.im/api/v1/`
+```
+
+### **Register a New User**
 - **Endpoint:** `POST /auth/register`
 - **Purpose:** Creates a new user account in the Telex platform. This step is required before accessing other services.
-<!-- - **Use Case:** Initial user signup process. -->
 
 #### Request Body
 ```json
@@ -47,10 +49,9 @@ The API supports features like OAuth integration, onboarding status tracking, an
 
 ---
 
-### 2. **Authenticate a User**
+### **Authenticate a User**
 - **Endpoint:** `POST /auth/login`
 - **Purpose:** Verifies user credentials and issues an access token for subsequent API calls.
-<!-- - **Use Case:** Login for returning users. -->
 
 #### Request Body
 ```json
@@ -79,10 +80,9 @@ The API supports features like OAuth integration, onboarding status tracking, an
 
 ---
 
-### 3. **Logout a User**
+### **Logout a User**
 - **Endpoint:** `POST /auth/logout`
 - **Purpose:** Ends the current user session by invalidating the token.
-<!-- - **Use Case:** When a user manually logs out. -->
 
 #### Responses
 - **200 OK:** Logout successful.
@@ -98,10 +98,9 @@ The API supports features like OAuth integration, onboarding status tracking, an
 
 ---
 
-### 4. **Google OAuth Callback**
+### **Google OAuth Callback**
 - **Endpoint:** `POST /auth/google`
 - **Purpose:** Processes OAuth tokens from Google to authenticate users.
-<!-- - **Use Case:** Allows users to log in or register using their Google account. -->
 
 #### Request Body
 ```json
@@ -118,10 +117,9 @@ The API supports features like OAuth integration, onboarding status tracking, an
 
 ---
 
-### 5. **Change Password**
+### **Change Password**
 - **Endpoint:** `PUT /auth/change-password`
 - **Purpose:** Allows users to update their password after verifying the old one.
-<!-- - **Use Case:** Enhances account security by enabling password updates. -->
 
 #### Request Body
 ```json
@@ -140,10 +138,9 @@ The API supports features like OAuth integration, onboarding status tracking, an
 
 ---
 
-### 6. **Request Magic Link**
+### **Request Magic Link**
 - **Endpoint:** `POST /auth/magic-link`
 - **Purpose:** Sends a magic link to the user's email for passwordless login.
-<!-- - **Use Case:** Facilitates frictionless authentication without remembering passwords. -->
 
 #### Request Body
 ```json
@@ -160,10 +157,9 @@ The API supports features like OAuth integration, onboarding status tracking, an
 
 ---
 
-### 7. **Verify Magic Link**
+### **Verify Magic Link**
 - **Endpoint:** `POST /auth/magic-link/verify`
 - **Purpose:** Validates the magic link token to authenticate the user.
-<!-- - **Use Case:** Completes the passwordless login flow. -->
 
 #### Request Body
 ```json
@@ -180,10 +176,9 @@ The API supports features like OAuth integration, onboarding status tracking, an
 
 ---
 
-### 8. **Request Password Reset**
+### **Request Password Reset**
 - **Endpoint:** `POST /auth/password-reset`
 - **Purpose:** Sends a password reset link to the user’s email.
-<!-- - **Use Case:** Helps users regain access to their account. -->
 
 #### Request Body
 ```json
@@ -200,10 +195,9 @@ The API supports features like OAuth integration, onboarding status tracking, an
 
 ---
 
-### 9. **Verify Password Reset Token**
+### **Verify Password Reset Token**
 - **Endpoint:** `POST /auth/password-reset/verify`
 - **Purpose:** Validates the token and updates the password.
-<!-- - **Use Case:** Completes the password reset process. -->
 
 #### Request Body
 ```json
@@ -221,10 +215,9 @@ The API supports features like OAuth integration, onboarding status tracking, an
 
 ---
 
-### 10. **Request Email Verification**
+### **Request Email Verification**
 - **Endpoint:** `POST /auth/email-request`
 - **Purpose:** Sends a verification email to the user.
-<!-- - **Use Case:** Ensures user-provided email addresses are valid. -->
 
 #### Request Body
 ```json
@@ -241,10 +234,9 @@ The API supports features like OAuth integration, onboarding status tracking, an
 
 ---
 
-### 11. **Verify Email Token**
+### **Verify Email Token**
 - **Endpoint:** `POST /auth/email-request/verify`
 - **Purpose:** Confirms the user’s email address using the provided token.
-<!-- - **Use Case:** Completes the email verification process. -->
 
 #### Request Body
 ```json
@@ -260,4 +252,3 @@ The API supports features like OAuth integration, onboarding status tracking, an
 - **422 Unprocessable Entity:** Token expired or invalid.
 
 ---
-

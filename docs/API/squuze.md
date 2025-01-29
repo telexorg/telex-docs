@@ -3,7 +3,7 @@
 ## Overview
 The **Telex Squeeze API** provides endpoints to manage opt-in notifications within Telex. This includes adding new entries to the opt-in list for receiving updates and notifications. These endpoints ensure efficient handling of user opt-ins and data integration.
 
-### 1. Opt-in for Notifications
+### Opt-in for Notifications
 - **Endpoint:** `/optin`
 - **Method:** `POST`
 - **Tags:** Squeeze

@@ -1,6 +1,9 @@
----
+# Newsletter
 
-## 2. Add New Email to Newsletter
+## Overview
+The **Telex Newsletter API** provides endpoints to manage newsletter subscriptions within Telex. This includes adding new email entries to the newsletter list. These endpoints ensure efficient handling of newsletter subscriptions and data integration.
+
+## Add New Email to Newsletter
 - **Endpoint:** `/newsletter`
 - **Method:** `POST`
 - **Tags:** Newsletter

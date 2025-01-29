@@ -1,9 +1,9 @@
-# Integrations API Documentation
+# Integrations
 
 ## Overview
 The **Integrations API** provides endpoints to manage integrations for organizations, including Slack integrations, integration creation, retrieval, updates, and deletions. This is organized* into **Integrations**, **Integration Settings**, **Channel Integrations** and **Custom Integrations**.
 
-### 1. Slack OAuth Code to Access Token Exchange
+### Slack OAuth Code to Access Token Exchange
 - **Endpoint:** `/slack/organisations/{organisationId}/token-exchg`
 - **Method:** `POST`
 - **Tags:** Integrations
@@ -45,7 +45,7 @@ The **Integrations API** provides endpoints to manage integrations for organizat
 
 ---
 
-### 2. Get Slack Access Information
+### Get Slack Access Information
 - **Endpoint:** `/slack/organisations/{organisationId}`
 - **Method:** `GET`
 - **Tags:** Integrations
@@ -85,7 +85,7 @@ The **Integrations API** provides endpoints to manage integrations for organizat
 
 ---
 
-### 3. Create a New Integration for the Organization
+### Create a New Integration for the Organization
 - **Endpoint:** `/organisations/{organisationId}/integrations`
 - **Method:** `POST`
 - **Tags:** Integrations
@@ -140,7 +140,7 @@ The **Integrations API** provides endpoints to manage integrations for organizat
 
 ---
 
-### 4. Get Integrations for an Organization
+### Get Integrations for an Organization
 - **Endpoint:** `/organisations/{organisationId}/integrations`
 - **Method:** `GET`
 - **Tags:** Integrations
@@ -178,7 +178,7 @@ The **Integrations API** provides endpoints to manage integrations for organizat
 
 ---
 
-### 5. Update an Organization's Integration
+### Update an Organization's Integration
 - **Endpoint:** `/organisations/{organisationId}/integrations/{integrationId}`
 - **Method:** `PATCH`
 - **Tags:** Integrations
@@ -218,7 +218,7 @@ The **Integrations API** provides endpoints to manage integrations for organizat
 
 ---
 
-### 6. Delete an Organization's Integration
+### Delete an Organization's Integration
 - **Endpoint:** `/organisations/{organisationId}/integrations/{integrationId}`
 - **Method:** `DELETE`
 - **Tags:** Integrations
@@ -256,7 +256,7 @@ The **Integrations API** provides endpoints to manage integrations for organizat
 ## Overview
 The **Integration Settings API** provides endpoints to manage settings for integrations within organizations.
 
-### 1. Add a New Integration Setting
+### Add a New Integration Setting
 - **Endpoint:** `/organisations/{organisation_id}/integrations/{integration_id}/settings`
 - **Method:** `POST`
 - **Tags:** IntegrationSettings
@@ -287,7 +287,7 @@ The **Integration Settings API** provides endpoints to manage settings for integ
 
 ---
 
-### 2. Retrieve Integration Settings
+### Retrieve Integration Settings
 - **Endpoint:** `/organisations/{organisation_id}/integrations/{integration_id}/settings`
 - **Method:** `GET`
 - **Tags:** IntegrationSettings
@@ -322,7 +322,7 @@ The **Integration Settings API** provides endpoints to manage settings for integ
 
 ---
 
-### 3. Update an Existing Integration Setting
+### Update an Existing Integration Setting
 - **Endpoint:** `/organisations/{organisation_id}/integrations/{integration_id}/settings`
 - **Method:** `PATCH`
 - **Tags:** IntegrationSettings
@@ -353,12 +353,11 @@ The **Integration Settings API** provides endpoints to manage settings for integ
 
 ---
 
-# Channel Integrations API Documentation
+## Channel Integrations Settings
 
-## Overview
 The **Channel Integrations API** provides endpoints to manage integrations specific to channels within organizations.
 
-### 1. Add a New Channel Integration Setting
+### Add a New Channel Integration Setting
 - **Endpoint:** `/organisations/{org_id}/integrations/{integration_id}/channels/{channel_id}/settings`
 - **Method:** `POST`
 - **Tags:** Channel Integration Settings
@@ -389,7 +388,7 @@ The **Channel Integrations API** provides endpoints to manage integrations speci
 
 ---
 
-### 2. Retrieve Channel Integration Settings
+### Retrieve Channel Integration Settings
 - **Endpoint:** `/organisations/{org_id}/integrations/{integration_id}/channels/{channel_id}/settings`
 - **Method:** `GET`
 - **Tags:** Channel Integration Settings
@@ -425,7 +424,7 @@ The **Channel Integrations API** provides endpoints to manage integrations speci
 
 ---
 
-### 3. Update a Channel Integration Setting
+### Update a Channel Integration Setting
 - **Endpoint:** `/organisations/{org_id}/integrations/{integration_id}/channels/{channel_id}/settings/{setting_id}`
 - **Method:** `PATCH`
 - **Tags:** Channel Integration Settings
@@ -456,7 +455,7 @@ The **Channel Integrations API** provides endpoints to manage integrations speci
 
 ---
 
-### 4. Delete a Channel Integration Setting
+### Delete a Channel Integration Setting
 - **Endpoint:** `/organisations/{org_id}/integrations/{integration_id}/channels/{channel_id}/settings/{setting_id}`
 - **Method:** `DELETE`
 - **Tags:** Channel Integration Settings
@@ -481,12 +480,11 @@ The **Channel Integrations API** provides endpoints to manage integrations speci
 
 ---
 
-# Custom Integrations API Documentation
+## Custom Integrations API Documentation
 
-## Overview
 The **Custom Integrations API** provides endpoints to manage custom integrations for organizations, including creation, retrieval, updating, and deletion of integrations and their settings.
 
-### 1. Create a New Integration for the Organization
+### Create a New Integration for the Organization
 - **Endpoint:** `/organisations/{organisationId}/integrations/custom`
 - **Method:** `POST`
 - **Tags:** Custom Integrations
@@ -515,7 +513,7 @@ The **Custom Integrations API** provides endpoints to manage custom integrations
 
 ---
 
-### 2. Get Integrations for an Organization
+### Get Integrations for an Organization
 - **Endpoint:** `/organisations/{organisationId}/integrations/custom`
 - **Method:** `GET`
 - **Tags:** Custom Integrations
@@ -552,7 +550,7 @@ The **Custom Integrations API** provides endpoints to manage custom integrations
 
 ---
 
-### 3. Update an Organization's Integration
+### Update an Organization's Integration
 - **Endpoint:** `/organisations/{organisationId}/integrations/custom/{integrationId}`
 - **Method:** `PUT`
 - **Tags:** Custom Integrations
@@ -584,7 +582,7 @@ The **Custom Integrations API** provides endpoints to manage custom integrations
 
 ---
 
-### 4. Delete an Organization's Integration
+### Delete an Organization's Integration
 - **Endpoint:** `/organisations/{organisationId}/integrations/custom/{integrationId}`
 - **Method:** `DELETE`
 - **Tags:** Custom Integrations
@@ -609,7 +607,7 @@ The **Custom Integrations API** provides endpoints to manage custom integrations
 
 ---
 
-### 5. Update an Organization's Custom Integration Settings
+### Update an Organization's Custom Integration Settings
 - **Endpoint:** `/organisations/{organisationId}/integrations/custom/{integrationId}/settings`
 - **Method:** `PUT`
 - **Tags:** Custom Integrations
@@ -644,7 +642,7 @@ The **Custom Integrations API** provides endpoints to manage custom integrations
 
 ---
 
-### 6. Get Integration Settings for an Organization
+### Get Integration Settings for an Organization
 - **Endpoint:** `/organisations/{organisationId}/integrations/custom/{integrationId}/settings`
 - **Method:** `GET`
 - **Tags:** Custom Integrations

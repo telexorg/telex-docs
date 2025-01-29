@@ -1,11 +1,11 @@
-# Channels Integration
+# Channels
 
 ## Overview
 The **Telex Channels API** provides a robust set of endpoints to manage channels within your application. This includes creating, updating, retrieving, and deleting channels, as well as managing users within a channel. These endpoints are designed to integrate seamlessly into your application, ensuring efficient and effective channel management.
 
 The API supports features like user association, message management, and channel metadata management, enabling developers to implement advanced channel management flows with minimal effort.
 
-### 1. Create a New Channel
+### Create a New Channel
 - **Endpoint:** `POST /channels`
 - **Tags:** channels
 - **Summary:** Create a new channel
@@ -17,11 +17,11 @@ The API supports features like user association, message management, and channel
 - **Required:** true
 ```json
 {
-  "name": "General",
-  "description": "General discussion",
-  "userIds": ["01910544-d1e1-7ada-bdac-c761e527ec91"],
-  "organisation_id": "01910544-d1e1-7ada-bdac-c761e527ec91",
-  "username": "creator_username"
+    "name": "General",
+    "description": "General discussion",
+    "userIds": ["01910544-d1e1-7ada-bdac-c761e527ec91"],
+    "organisation_id": "01910544-d1e1-7ada-bdac-c761e527ec91",
+    "username": "creator_username"
 }
 ```
 
@@ -29,20 +29,20 @@ The API supports features like user association, message management, and channel
 - **201**: Channel created successfully.
 ```json
 {
-  "status": "success",
-  "status_code": 201,
-  "message": "Channel created successfully",
-  "data": {
-    "id": "01910544-d1e1-7ada-bdac-c761e527ec91",
-    "name": "General",
-    "description": "General discussion",
-    "is_private": false,
-    "is_dm": false,
-    "organisation_id": "01910544-d1e1-7ada-bdac-c761e527ec91",
-    "created_by": "01910544-d1e1-7ada-bdac-c761e527ec91",
-    "created_at": "2024-07-30T21:11:21.9538358+01:00",
-    "updated_at": "2024-07-30T21:11:21.9538358+01:00"
-  }
+    "status": "success",
+    "status_code": 201,
+    "message": "Channel created successfully",
+    "data": {
+        "id": "01910544-d1e1-7ada-bdac-c761e527ec91",
+        "name": "General",
+        "description": "General discussion",
+        "is_private": false,
+        "is_dm": false,
+        "organisation_id": "01910544-d1e1-7ada-bdac-c761e527ec91",
+        "created_by": "01910544-d1e1-7ada-bdac-c761e527ec91",
+        "created_at": "2024-07-30T21:11:21.9538358+01:00",
+        "updated_at": "2024-07-30T21:11:21.9538358+01:00"
+    }
 }
 ```
 - **400**: Bad request.
@@ -52,7 +52,7 @@ The API supports features like user association, message management, and channel
 
 ---
 
-### 2. Retrieve a List of Channels
+### Retrieve a List of Channels
 - **Endpoint:** `GET /channels`
 - **Tags:** channels
 - **Summary:** Retrieve a list of channels
@@ -63,22 +63,22 @@ The API supports features like user association, message management, and channel
 - **200**: Channels retrieved successfully.
 ```json
 {
-  "channels": [
-    {
-      "channels_id": "019146f9-68f3-7294-9c4e-a158cc0f7e3a",
-      "name": "hackers",
-      "description": "this room is meant for hackers",
-      "organisation_id": "019146f9-3d17-7294-93ac-9963ada4b7c1",
-      "owner_id": "019146f6-fd9b-7293-a5d2-b05ba6be2185",
-      "users": ["01910544-d1e1-7ada-bdac-c761e527ec91"],
-      "user_count": 1,
-      "message_count": 0,
-      "webhook_url": "https://ping.staging.telex.im/v1/webhooks/someid",
-      "created_at": "2024-08-12T15:23:56.147736+01:00",
-      "deleted_at": "0001-01-01T00:13:35+00:13",
-      "messages": []
-    }
-  ]
+    "channels": [
+        {
+            "channels_id": "019146f9-68f3-7294-9c4e-a158cc0f7e3a",
+            "name": "hackers",
+            "description": "this room is meant for hackers",
+            "organisation_id": "019146f9-3d17-7294-93ac-9963ada4b7c1",
+            "owner_id": "019146f6-fd9b-7293-a5d2-b05ba6be2185",
+            "users": ["01910544-d1e1-7ada-bdac-c761e527ec91"],
+            "user_count": 1,
+            "message_count": 0,
+            "webhook_url": "https://ping.staging.telex.im/v1/webhooks/someid",
+            "created_at": "2024-08-12T15:23:56.147736+01:00",
+            "deleted_at": "0001-01-01T00:13:35+00:13",
+            "messages": []
+        }
+    ]
 }
 ```
 - **400**: Bad request.
@@ -88,20 +88,20 @@ The API supports features like user association, message management, and channel
 
 ---
 
-### 3. Create a New Message in a Channel
+### Create a New Message in a Channel
 - **Endpoint:** `POST /channels/{channel_id}/messages`
 - **Tags:** messages
 - **Summary:** Create a new message
 - **Security:** bearerAuth
 - **Parameters:**
-  - **channel_id** (path, required): ID of the channel to create the message in.
+    - **channel_id** (path, required): ID of the channel to create the message in.
 
 #### Request Body
 - **Content-Type:** `application/json`
 - **Required:** true
 ```json
 {
-  "content": "Hello, world!"
+    "content": "Hello, world!"
 }
 ```
 
@@ -109,15 +109,15 @@ The API supports features like user association, message management, and channel
 - **201**: Message created successfully.
 ```json
 {
-  "status": "success",
-  "status_code": 201,
-  "message": "Message created successfully",
-  "data": {
-    "id": "message_id",
-    "content": "Hello, world!",
-    "channel_id": "01910544-d1e1-7ada-bdac-c761e527ec91",
-    "created_at": "2024-07-30T21:11:21.9538358+01:00"
-  }
+    "status": "success",
+    "status_code": 201,
+    "message": "Message created successfully",
+    "data": {
+        "id": "message_id",
+        "content": "Hello, world!",
+        "channel_id": "01910544-d1e1-7ada-bdac-c761e527ec91",
+        "created_at": "2024-07-30T21:11:21.9538358+01:00"
+    }
 }
 ```
 - **400**: Bad request.
@@ -127,20 +127,20 @@ The API supports features like user association, message management, and channel
 
 ---
 
-### 4. Edit a Message in a Channel
+### Edit a Message in a Channel
 - **Endpoint:** `PUT /channels/{channel_id}/messages`
 - **Tags:** messages
 - **Summary:** Edit a message
 - **Security:** bearerAuth
 - **Parameters:**
-  - **channel_id** (path, required): ID of the channel to edit the message in.
+    - **channel_id** (path, required): ID of the channel to edit the message in.
 
 #### Request Body
 - **Content-Type:** `application/json`
 - **Required:** true
 ```json
 {
-  "content": "Updated message content"
+    "content": "Updated message content"
 }
 ```
 
@@ -148,15 +148,15 @@ The API supports features like user association, message management, and channel
 - **200**: Message updated successfully.
 ```json
 {
-  "status": "success",
-  "status_code": 200,
-  "message": "Message updated successfully",
-  "data": {
-    "id": "message_id",
-    "content": "Updated message content",
-    "channel_id": "01910544-d1e1-7ada-bdac-c761e527ec91",
-    "updated_at": "2024-07-30T21:11:21.9538358+01:00"
-  }
+    "status": "success",
+    "status_code": 200,
+    "message": "Message updated successfully",
+    "data": {
+        "id": "message_id",
+        "content": "Updated message content",
+        "channel_id": "01910544-d1e1-7ada-bdac-c761e527ec91",
+        "updated_at": "2024-07-30T21:11:21.9538358+01:00"
+    }
 }
 ```
 - **400**: Bad request.
@@ -166,25 +166,25 @@ The API supports features like user association, message management, and channel
 
 ---
 
-### 5. Retrieve a List of Messages in a Channel
+### Retrieve a List of Messages in a Channel
 - **Endpoint:** `GET /channels/{channel_id}/messages`
 - **Tags:** messages
 - **Summary:** Retrieve a list of messages
 - **Security:** bearerAuth
 - **Parameters:**
-  - **channel_id** (path, required): ID of the channel to retrieve messages for.
+    - **channel_id** (path, required): ID of the channel to retrieve messages for.
 
 #### Responses
 - **200**: Messages retrieved successfully.
 ```json
 {
-  "messages": [
-    {
-      "id": "message_id",
-      "content": "Hello, world!",
-      "created_at": "2024-07-30T21:11:21.9538358+01:00"
-    }
-  ]
+    "messages": [
+        {
+            "id": "message_id",
+            "content": "Hello, world!",
+            "created_at": "2024-07-30T21:11:21.9538358+01:00"
+        }
+    ]
 }
 ```
 - **400**: Bad request.

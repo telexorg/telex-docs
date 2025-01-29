@@ -1,4 +1,4 @@
-# Telex User API Documentation
+# Users
 
 ## Overview
 This document provides an overview of the user-related endpoints available in the Telex API, including organization details, role assignments, login audits, session management, and organization switching.
@@ -7,7 +7,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ## User Endpoints
 
-### 1. Retrieve Organisation Details by Organisation ID
+### Retrieve Organisation Details by Organisation ID
 - **Endpoint:** `GET /users/organisations/{org_id}`
 - **Summary:** Retrieve organisation details by organisation ID.
 - **Security:** bearerAuth
@@ -46,7 +46,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 2. Assign User to Another Role
+### Assign User to Another Role
 - **Endpoint:** `PUT /users/switch-roles`
 - **Summary:** Assign user to another role.
 - **Security:** bearerAuth
@@ -76,7 +76,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 3. Fetch User Role in an Organisation
+### Fetch User Role in an Organisation
 - **Endpoint:** `GET /users/{user_id}/organisations/{organisation_id}/roles`
 - **Summary:** Fetch user role in an organisation.
 
@@ -103,7 +103,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 4. Retrieve Login Audit Logs
+### Retrieve Login Audit Logs
 - **Endpoint:** `GET /users/{userId}/login-audit`
 - **Summary:** Retrieve login audit logs.
 - **Security:** bearerAuth
@@ -119,7 +119,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 5. Revoke a User Session
+### Revoke a User Session
 - **Endpoint:** `PUT /users/revoke-session`
 - **Summary:** Revoke a user session.
 - **Security:** bearerAuth
@@ -147,7 +147,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 6. Switch to an Organisation
+### Switch to an Organisation
 - **Endpoint:** `PUT /users/switch-org`
 - **Summary:** Switch to an organisation.
 - **Security:** bearerAuth
@@ -175,7 +175,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 7. Retrieve a User's Organizations
+### Retrieve a User's Organizations
 - **Endpoint:** `GET /users/organisations`
 - **Summary:** Retrieve a list of organizations associated with a user.
 - **Security:** bearerAuth
@@ -189,7 +189,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 8. Retrieve a Specific User
+### Retrieve a Specific User
 - **Endpoint:** `GET /users/{userId}`
 - **Summary:** Retrieve details of a specific user by their ID.
 - **Security:** bearerAuth
@@ -206,7 +206,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 9. Delete a Specific User
+### Delete a Specific User
 - **Endpoint:** `DELETE /users/{userId}`
 - **Summary:** Delete a specific user by their ID.
 - **Security:** bearerAuth
@@ -224,7 +224,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 10. Update a Specific User
+### Update a Specific User
 - **Endpoint:** `PUT /users/{userId}`
 - **Summary:** Update the details of a specific user by their ID.
 - **Security:** bearerAuth
@@ -244,7 +244,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 11. Deactivate a Specific User
+### Deactivate a Specific User
 - **Endpoint:** `DELETE /users/deactivate/{userId}`
 - **Summary:** Deactivate a specific user by their ID.
 - **Security:** bearerAuth
@@ -262,7 +262,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 12. Reactivate a Specific User
+### Reactivate a Specific User
 - **Endpoint:** `PUT /users/reactivate/{userId}`
 - **Summary:** Reactivate a specific user by their ID.
 - **Security:** bearerAuth
@@ -280,7 +280,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 13. Retrieve a List of Users
+### Retrieve a List of Users
 - **Endpoint:** `GET /users`
 - **Summary:** Retrieve a list of all users in the system.
 - **Security:** bearerAuth
@@ -294,7 +294,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 14. Get User Notification Preferences
+### Get User Notification Preferences
 - **Endpoint:** `GET /users/notification-preferences`
 - **Summary:** Retrieves the notification preferences for a specific user.
 - **Security:** bearerAuth
@@ -323,7 +323,7 @@ This document provides an overview of the user-related endpoints available in th
 
 ---
 
-### 15. Update User Notification Preferences
+### Update User Notification Preferences
 - **Endpoint:** `PUT /users/notification-preferences`
 - **Summary:** Updates the notification preferences for a specific user.
 - **Security:** bearerAuth
@@ -363,4 +363,3 @@ This document provides an overview of the user-related endpoints available in th
 - **401**: Unauthorized.
 - **422**: Validation error.
 - **500**: Server error.
-

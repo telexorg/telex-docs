@@ -4,7 +4,7 @@
 The **Telex Token API** provides endpoints to generate tokens for various purposes within your application. This includes generating connection tokens for establishing server connections to Centrifugo and subscription tokens for subscribing to specific channels.
 
 
-### 1. Generate Connection Token
+### Generate Connection Token
 - **Endpoint:** `GET /token/connection`
 - **Summary:** Generate connection token
 - **Security:** bearerAuth
@@ -43,7 +43,7 @@ The **Telex Token API** provides endpoints to generate tokens for various purpos
 
 ---
 
-### 2. Generate Subscription Token
+### Generate Subscription Token
 - **Endpoint:** `POST /token/subscription`
 - **Summary:** Generate subscription token
 - **Security:** bearerAuth

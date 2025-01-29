@@ -1,4 +1,5 @@
-## Overview
+# Overview
+
 The **Telex Overview API** provides endpoints to retrieve metrics and summaries for various entities within Telex. This includes retrieving metrics for threads associated with a specific organization over a given number of days. These endpoints ensure efficient handling of data retrieval and integration for organizational insights.
 
 

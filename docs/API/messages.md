@@ -3,12 +3,11 @@
 ## Overview
 The **Telex Messages API** provides endpoints to manage messages within telex. This includes creating, editing, and retrieving messages within a channel. These endpoints ensure efficient handling of message operations and data integration.
 
-### 1. Create a New Message
+### Create a New Message
 - **Endpoint:** `POST /channels/{channel_id}/messages`
-- **Tags:** messages
 - **Summary:** Create a new message
 - **Security:** 
-  - `bearerAuth: []`
+    - `bearerAuth: []`
 - **Description:** Creates a new message within a channel.
 
 #### Parameters
@@ -17,8 +16,8 @@ The **Telex Messages API** provides endpoints to manage messages within telex. T
 #### Request Body
 ```json
 {
-  "content": "Your message content here",
-  "thread_id": "optional-thread-id" // Optional if the message is part of a thread
+    "content": "Your message content here",
+    "thread_id": "optional-thread-id" // Optional if the message is part of a thread
 }
 ```
 
@@ -26,25 +25,25 @@ The **Telex Messages API** provides endpoints to manage messages within telex. T
 - **201**: Message created successfully.
 ```json
 {
-  "status": "success",
-  "status_code": 201,
-  "message": "Message created successfully",
-  "data": {
-    "id": "uuid",
-    "content": "Your message content here",
-    "channel_id": "uuid",
-    "created_at": "2023-01-01T00:00:00Z",
-    "updated_at": "2023-01-01T00:00:00Z"
-  }
+    "status": "success",
+    "status_code": 201,
+    "message": "Message created successfully",
+    "data": {
+        "id": "uuid",
+        "content": "Your message content here",
+        "channel_id": "uuid",
+        "created_at": "2023-01-01T00:00:00Z",
+        "updated_at": "2023-01-01T00:00:00Z"
+    }
 }
 ```
 - **400**: Bad request.
 ```json
 {
-  "status": "error",
-  "status_code": 400,
-  "message": "Bad request",
-  "errors": ["Validation error details"]
+    "status": "error",
+    "status_code": 400,
+    "message": "Bad request",
+    "errors": ["Validation error details"]
 }
 ```
 - **401**: Unauthorized.
@@ -75,9 +74,8 @@ The **Telex Messages API** provides endpoints to manage messages within telex. T
 
 ---
 
-### 2. Edit a Message
+### Edit a Message
 - **Endpoint:** `PUT /channels/{channel_id}/messages`
-- **Tags:** messages
 - **Summary:** Edit a message
 - **Security:** 
   - `bearerAuth: []`
@@ -147,7 +145,7 @@ The **Telex Messages API** provides endpoints to manage messages within telex. T
 
 ---
 
-### 3. Retrieve a List of Messages
+### Retrieve a List of Messages
 - **Endpoint:** `GET /channels/{channel_id}/messages`
 - **Tags:** messages
 - **Summary:** Retrieve a list of messages

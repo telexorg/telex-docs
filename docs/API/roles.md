@@ -7,7 +7,7 @@ This document provides an overview of the organization roles endpoints available
 
 ## Organization Roles Endpoints
 
-### 1. Create a New Organization Role
+### Create a New Organization Role
 - **Endpoint:** `POST /organisations/{orgId}/roles`
 - **Description:** This endpoint creates a new role within the specified organization.
 
@@ -38,7 +38,7 @@ This document provides an overview of the organization roles endpoints available
 
 ---
 
-### 2. Retrieve a List of Organization Roles
+### Retrieve a List of Organization Roles
 - **Endpoint:** `GET /organisations/{orgId}/roles`
 - **Description:** This endpoint retrieves a list of roles within the specified organization.
 
@@ -59,7 +59,7 @@ This document provides an overview of the organization roles endpoints available
 
 ---
 
-### 3. Retrieve a Specific Organization Role
+### Retrieve a Specific Organization Role
 - **Endpoint:** `GET /organisations/{orgId}/roles/{roleId}`
 - **Description:** This endpoint retrieves detailed information about a specific role within the specified organization.
 
@@ -84,7 +84,7 @@ This document provides an overview of the organization roles endpoints available
 
 ---
 
-### 4. Update a Specific Organization Role
+### Update a Specific Organization Role
 - **Endpoint:** `PUT /organisations/{orgId}/roles/{roleId}`
 - **Description:** This endpoint updates the details of a specific role within the specified organization.
 
@@ -116,7 +116,7 @@ This document provides an overview of the organization roles endpoints available
 
 ---
 
-### 5. Delete a Specific Organization Role
+### Delete a Specific Organization Role
 - **Endpoint:** `DELETE /organisations/{orgId}/roles/{roleId}`
 - **Description:** This endpoint deletes a specific role within the specified organization.
 
@@ -141,7 +141,7 @@ This document provides an overview of the organization roles endpoints available
 
 ---
 
-### 6. Update Permissions for a Specific Role
+### Update Permissions for a Specific Role
 - **Endpoint:** `PUT /organisations/{orgId}/roles/{roleId}/permissions`
 - **Description:** This endpoint updates the permissions for a specific role within the specified organization.
 
@@ -174,7 +174,7 @@ This document provides an overview of the organization roles endpoints available
 
 ---
 
-### 7. Assign User to Another Role
+### Assign User to Another Role
 - **Endpoint:** `PUT /users/switch-roles`
 - **Description:** This endpoint assigns a user to a different role within an organization.
 
