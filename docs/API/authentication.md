@@ -1,6 +1,7 @@
 # Authentication
 
 ## Overview
+
 The **Telex Authentication API** provides a suite of endpoints to manage user authentication securely and effectively. This includes user registration, login, logout, password management, magic link authentication, and email verification. These endpoints are designed to integrate seamlessly into your application, ensuring a smooth user experience while maintaining robust security practices.
 
 The API supports features like OAuth integration, onboarding status tracking, and token-based verification, enabling developers to implement advanced authentication flows with minimal effort.
@@ -9,20 +10,21 @@ The API supports features like OAuth integration, onboarding status tracking, an
 
 ## Authentication Endpoints
 
-
 ```
 Base URL
 
-production - `https://api.telex.im/api/v1/` 
+production - `https://api.telex.im/api/v1/`
 
 staging - `https://api.staging.telex.im/api/v1/`
 ```
 
 ### **Register a New User**
+
 - **Endpoint:** `POST /auth/register`
 - **Purpose:** Creates a new user account in the Telex platform. This step is required before accessing other services.
 
 #### Request Body
+
 ```json
 {
   "username": "string",
@@ -32,10 +34,12 @@ staging - `https://api.staging.telex.im/api/v1/`
   "last_name": "string"
 }
 ```
+
 - **Required Fields:** `email`, `password`
 - **Optional Fields:** `username`, `first_name`, `last_name`
 
 #### Responses
+
 - **201 Created:** User successfully registered.
   ```json
   {
@@ -50,19 +54,23 @@ staging - `https://api.staging.telex.im/api/v1/`
 ---
 
 ### **Authenticate a User**
+
 - **Endpoint:** `POST /auth/login`
 - **Purpose:** Verifies user credentials and issues an access token for subsequent API calls.
 
 #### Request Body
+
 ```json
 {
   "email": "string",
   "password": "string"
 }
 ```
+
 - **Required Fields:** `email`, `password`
 
 #### Responses
+
 - **200 OK:** Login successful; returns an access token.
   ```json
   {
@@ -70,7 +78,9 @@ staging - `https://api.staging.telex.im/api/v1/`
     "message": "Login successful",
     "status_code": 200,
     "data": {
-      "user": { /* User details */ },
+      "user": {
+        /* User details */
+      },
       "access_token": "access_token"
     }
   }
@@ -81,10 +91,12 @@ staging - `https://api.staging.telex.im/api/v1/`
 ---
 
 ### **Logout a User**
+
 - **Endpoint:** `POST /auth/logout`
 - **Purpose:** Ends the current user session by invalidating the token.
 
 #### Responses
+
 - **200 OK:** Logout successful.
   ```json
   {
@@ -99,18 +111,22 @@ staging - `https://api.staging.telex.im/api/v1/`
 ---
 
 ### **Google OAuth Callback**
+
 - **Endpoint:** `POST /auth/google`
 - **Purpose:** Processes OAuth tokens from Google to authenticate users.
 
 #### Request Body
+
 ```json
 {
   "id_token": "string"
 }
 ```
+
 - **Required Fields:** `id_token`
 
 #### Responses
+
 - **200 OK:** OAuth login successful; returns user details and access token.
 - **400 Bad Request:** Invalid or missing `id_token`.
 - **401 Unauthorized:** Token verification failed.
@@ -118,19 +134,23 @@ staging - `https://api.staging.telex.im/api/v1/`
 ---
 
 ### **Change Password**
+
 - **Endpoint:** `PUT /auth/change-password`
 - **Purpose:** Allows users to update their password after verifying the old one.
 
 #### Request Body
+
 ```json
 {
   "old_password": "string",
   "new_password": "string"
 }
 ```
+
 - **Required Fields:** `old_password`, `new_password`
 
 #### Responses
+
 - **200 OK:** Password updated successfully.
 - **400 Bad Request:** Missing or invalid fields.
 - **401 Unauthorized:** Old password incorrect.
@@ -139,18 +159,22 @@ staging - `https://api.staging.telex.im/api/v1/`
 ---
 
 ### **Request Magic Link**
+
 - **Endpoint:** `POST /auth/magic-link`
 - **Purpose:** Sends a magic link to the user's email for passwordless login.
 
 #### Request Body
+
 ```json
 {
   "email": "string"
 }
 ```
+
 - **Required Fields:** `email`
 
 #### Responses
+
 - **200 OK:** Magic link sent successfully.
 - **400 Bad Request:** Invalid or missing email address.
 - **500 Internal Server Error:** Failed to process the request.
@@ -158,18 +182,22 @@ staging - `https://api.staging.telex.im/api/v1/`
 ---
 
 ### **Verify Magic Link**
+
 - **Endpoint:** `POST /auth/magic-link/verify`
 - **Purpose:** Validates the magic link token to authenticate the user.
 
 #### Request Body
+
 ```json
 {
   "token": "string"
 }
 ```
+
 - **Required Fields:** `token`
 
 #### Responses
+
 - **200 OK:** Token verified successfully; returns user details.
 - **400 Bad Request:** Invalid token.
 - **422 Unprocessable Entity:** Token expired or already used.
@@ -177,18 +205,22 @@ staging - `https://api.staging.telex.im/api/v1/`
 ---
 
 ### **Request Password Reset**
+
 - **Endpoint:** `POST /auth/password-reset`
 - **Purpose:** Sends a password reset link to the user’s email.
 
 #### Request Body
+
 ```json
 {
   "email": "string"
 }
 ```
+
 - **Required Fields:** `email`
 
 #### Responses
+
 - **200 OK:** Password reset link sent.
 - **400 Bad Request:** Invalid or missing email address.
 - **500 Internal Server Error:** Failed to process the request.
@@ -196,19 +228,23 @@ staging - `https://api.staging.telex.im/api/v1/`
 ---
 
 ### **Verify Password Reset Token**
+
 - **Endpoint:** `POST /auth/password-reset/verify`
 - **Purpose:** Validates the token and updates the password.
 
 #### Request Body
+
 ```json
 {
   "token": "string",
   "new_password": "string"
 }
 ```
+
 - **Required Fields:** `token`, `new_password`
 
 #### Responses
+
 - **200 OK:** Password reset successful.
 - **400 Bad Request:** Invalid or missing fields.
 - **422 Unprocessable Entity:** Token expired or invalid.
@@ -216,18 +252,22 @@ staging - `https://api.staging.telex.im/api/v1/`
 ---
 
 ### **Request Email Verification**
+
 - **Endpoint:** `POST /auth/email-request`
 - **Purpose:** Sends a verification email to the user.
 
 #### Request Body
+
 ```json
 {
   "email": "string"
 }
 ```
+
 - **Required Fields:** `email`
 
 #### Responses
+
 - **200 OK:** Verification email sent.
 - **400 Bad Request:** Invalid or missing email.
 - **422 Unprocessable Entity:** Email already verified.
@@ -235,18 +275,22 @@ staging - `https://api.staging.telex.im/api/v1/`
 ---
 
 ### **Verify Email Token**
+
 - **Endpoint:** `POST /auth/email-request/verify`
 - **Purpose:** Confirms the user’s email address using the provided token.
 
 #### Request Body
+
 ```json
 {
   "token": "string"
 }
 ```
+
 - **Required Fields:** `token`
 
 #### Responses
+
 - **200 OK:** Email verified successfully.
 - **400 Bad Request:** Invalid token.
 - **422 Unprocessable Entity:** Token expired or invalid.
