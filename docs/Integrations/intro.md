@@ -44,12 +44,11 @@ All integrations in Telex follow a standardized data format for receiving inform
 ```json
 {
   "message": string,
-  "channel_meta": {
-    "name": string,
-    "webhook_url": URL
-  }
+  "channel_id": string,
   "settings": Record<string, any>[]
 }
 ```
 
-The `Record<string, any>[]` is a list of key-value pairs that can be used to pass additional information to the integration. The message field is the message that the integration is expected to process. The settings field is a list of key-value pairs that can be used to pass additional information to the integration. The settings field is optional and can be omitted if not needed, althought this is rare.
+Modifier integrations do not need the channel id as they return a response immediately. Interval integrations, on the other hand, need the channel id to construct a webhook return URI. This URI will be used to send data back to the channel.
+
+Integration settings is an array of objects (or records) defined by the creator. For each organisation, this defined settings record is used to display a UI which an organisation can use to set values based on their need. The integration creator is solely responsible for parsing and interpreting the settings. All Telex does is pass the integration settings to the corresponding integration if that integration is enabled for a channel.
