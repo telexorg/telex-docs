@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Activate Custom Integrations
 
-Custom integrations in Telex enable tailored workflows by connecting with third-party tools and services that support webhook-based communication. Follow these steps to activate a custom integration from the Telex dashboard.
+Custom integrations in Telex enable tailored workflows by connecting with third-party tools and services that support webhook-based communication. Follow these steps to add and activate a custom integration from the Telex dashboard.
 
 ### Activating a Custom Integration
 

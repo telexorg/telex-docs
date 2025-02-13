@@ -19,7 +19,7 @@ The integration_type determines if an integration will need a target_url, a tick
 
 ### Modifier Integration Type
 
-The JSON snippet below outlines a generic representation of a modifier integration. You can copy it as thr starting point for your custom integration.
+The JSON snippet below outlines a generic representation of a modifier integration. You can copy it as the starting point for your custom integration.
 
 ```json
 {
@@ -212,7 +212,7 @@ The JSON snippet below outlines a generic representation of an interval integrat
 }
 ```
 
-As mentioned earlier, an interval integration will only need the target url if it needs to collect and store channel messages for further processing. An example of an integration with this requirement is the summariser. Anytime it receives a new message for a channel, it stores the message against the channel's channel_id. When the tick_url is called, it rhen summarises the messages it has so far, constructs the webhook return URL and sends to Telex. It can then clear its available messages cache, getting ready for continue aggregating and summarising channel medsages.
+As mentioned earlier, an interval integration will only need the target URL if it needs to collect and store channel messages for further processing. An example of such an integration is the summariser. Whenever it receives a new message for a channel, it stores the message using the channel's channel_id. When the tick_url is called, it summarises the stored messages, constructs the webhook return URL, and sends the summary to Telex. Afterward, it clears its message cache, ready to continue aggregating and summarising new channel messages.
 
 #### Sending Data to Telex
 
