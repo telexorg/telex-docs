@@ -4,10 +4,11 @@ sidebar_position: 1
 
 # Telex Integrations Overview
 
-Telex is an integrations marketplace. The platform is built to allow developers to write scripts or build simple executables that collect data from a source and post it to a [Telex channel](/docs/Channels/intro). An example integration is a Summarizer that collects data from a Telex channel over a set period of time and posts a summary of all messages in that period back to the channel. Another example is a Bitcoin price tracker that uses the coingecko API to get the current price of Bitcoin and posts it every 30 minutes. A third example is a profanity filter that masks profane words in every new message entering a channel. On analyzing the examples above, it is clear that there are different categories of integrations. Broadly speaking, there are two categories:
+Telex is an integrations marketplace. The platform is built to allow developers to write scripts or build simple executables that collect data from a source and post it to a [Telex channel](/docs/Channels/intro). An example integration is a Summarizer that collects data from a Telex channel over a set period of time and posts a summary of all messages in that period back to the channel. Another example is a Bitcoin price tracker that uses the coingecko API to get the current price of Bitcoin and posts it every 30 minutes. A third example is a profanity filter that masks profane words in every new message entering a channel. On analyzing the examples above, it is clear that there are different categories of integrations. Broadly speaking, there are three categories:
 
 1. Modifier integrations: These modify new messages entering a channel and are not time bound
 2. Interval integrations: These send messages to a channel at their set intervals. They may or may not receive new messages entering the channel.
+3. Output integrations: Similar to modifier integrations, but get called whenever data enters a channel. They are like routers, sending new data coming into the Telex channel to external sources like discord, Google Sheet, even email.
 
 Below is a better explanation of the two categories.
 
@@ -52,3 +53,17 @@ All integrations in Telex follow a standardized data format for receiving inform
 Modifier integrations do not need the channel id as they return a response immediately. Interval integrations, on the other hand, need the channel id to construct a webhook return URI. This URI will be used to send data back to the channel.
 
 Integration settings is an array of objects (or records) defined by the creator. For each organisation, this defined settings record is used to display a UI which an organisation can use to set values based on their need. The integration creator is solely responsible for parsing and interpreting the settings. All Telex does is pass the integration settings to the corresponding integration if that integration is enabled for a channel.
+
+## Output Integrations
+
+These integrations can be thought of as routers. Whenever new data enters a Telex channel that they are activated in, they route that data somewhere. Telex has no knowledge of where these integrations send their data to. All Telex does is call the integration's /target_url when new data is added to the channel. There could be a case where multiple integrations exist for a channel.
+
+Here's a scenario where an output integration is useful:
+
+- You have a channel where you want to monitor the uptime of a website
+- You need to inform the DevOps team whenever that website is down
+- The DevOps team cannot be looking at the channel data every second because they are busy
+- You build an email **output** integration that send emails to the addresses specified in the settings
+- You activate this integration on your channel
+- Telex sends data about website downtimes to the email integration
+- The email integration sends an email to the DevOps team whenever the monitored site is down

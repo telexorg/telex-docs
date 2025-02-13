@@ -1,28 +1,6 @@
-# Setting Up a Custom Integration
+# Modifier Custom Integration - Word Repeater
 
-## Message Formatting Integration Documentation
-
-## Overview
-
-The **Message Formatting Integration** is a [**modifier-type custom integration**](../custom-integrations/creating_integration.md#modifier-integration-type) that enables developers to process and modify incoming messages before sending them to a designated Telex channel. This service applies custom formatting rules defined in the request payload, such as limiting message length, repeating specified words, and dynamically modifying message content.
-
-This documentation is designed for **developers** and provides a comprehensive guide to setting up, implementing, and using the integration. It includes API reference, implementation details, deployment instructions, and examples.
-
----
-
-## Table of Contents
-
-1. **Prerequisites**
-2. **API Reference**
-3. **Integration Workflow**
-4. **Implementation Details**
-5. **Error Handling**
-6. **Deployment & Environment Configuration**
-7. **Logging**
-8. **External Communication**
-9. **Example Usage**
-10. **Setting Up Telex Integration**
-11. **Conclusion**
+This page details the steps to build a simple modifier integration that repeats words. Given a string "Don! Well, look who we've got here.", and settings specifying the target words as "Don", and "Well", it should return "Don Don Don! Well Well Well, look who we've got here". It's silly but it showcases how a custom integration might be built.
 
 ---
 
@@ -80,12 +58,12 @@ For modifier-type integrations, you need to define a **POST endpoint** that serv
 
 #### Request Parameters
 
-- `channel_id` *(string, required)* – The unique identifier for the Telex channel.
-- `settings` *(array, required)* – List of formatting settings applied to the message:
-  - `maxMessageLength` *(integer, required)* – Maximum allowed length for the formatted message.
-  - `repeatWords` *(string, required)* – Comma-separated words that should be repeated in the message.
-  - `noOfRepetitions` *(integer, required)* – Number of times the words should be repeated.
-- `message` *(string, required)* – The original message to be formatted.
+- `channel_id` _(string, required)_ – The unique identifier for the Telex channel.
+- `settings` _(array, required)_ – List of formatting settings applied to the message:
+  - `maxMessageLength` _(integer, required)_ – Maximum allowed length for the formatted message.
+  - `repeatWords` _(string, required)_ – Comma-separated words that should be repeated in the message.
+  - `noOfRepetitions` _(integer, required)_ – Number of times the words should be repeated.
+- `message` _(string, required)_ – The original message to be formatted.
 
 #### Response Payload
 
@@ -100,10 +78,10 @@ For modifier-type integrations, you need to define a **POST endpoint** that serv
 
 #### Response Parameters
 
-- `event_name` *(string)* – Identifies the event type as `message_formatted`.
-- `message` *(string)* – The processed and formatted message.
-- `status` *(string)* – Processing status.
-- `username` *(string)* – Name of the service bot processing the message.
+- `event_name` _(string)_ – Identifies the event type as `message_formatted`.
+- `message` _(string)_ – The processed and formatted message.
+- `status` _(string)_ – Processing status.
+- `username` _(string)_ – Name of the service bot processing the message.
 
 ---
 
@@ -361,7 +339,6 @@ This request will return:
 
 ## 11. Conclusion
 
-This documentation provides all necessary details for developers to integrate and utilize the **Telex Message Formatting Integration** efficiently. Ensure that your request payloads are structured correctly to avoid errors. Happy coding! Love from Telex ❤️.
+This documentation provides all necessary details for developers to integrate and utilize the **Telex Word Repeater Integration** efficiently. Ensure that your request payloads are structured correctly to avoid errors. Happy coding! Love from Telex ❤️.
 
---- 
-
+---
