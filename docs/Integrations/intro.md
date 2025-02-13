@@ -10,7 +10,7 @@ Telex is an integrations marketplace. The platform is built to allow developers 
 2. Interval integrations: These send messages to a channel at their set intervals. They may or may not receive new messages entering the channel.
 3. Output integrations: Similar to modifier integrations, but get called whenever data enters a channel. They are like routers, sending new data coming into the Telex channel to external sources like discord, Google Sheet, even email.
 
-Below is a better explanation of the two categories.
+Below is a better explanation of the three categories.
 
 ## Modifier Integrations
 
@@ -37,22 +37,6 @@ _Website Uptime monitor integration architecture_
 ### Channel Summarizer
 
 The summarizer integration is an interval integration and such, it's timing will be maintained by Telex. Every new message that enters a channel where it is activated will be sent to the integration, just like in the case of a modifier integration. When the defined interval is reached, Telex will call its `tick_url` endpoint and the integration is expected to summarize all the messages it has received in the last interval and post the summary to the channel using the channel webhook URL.
-
-## Technical Specs of Integration
-
-All integrations in Telex follow a standardized data format for receiving information. The data is passed in a generic format that can be interpreted by any programming language:
-
-```json
-{
-  "message": string,
-  "channel_id": string,
-  "settings": Record<string, any>[]
-}
-```
-
-Modifier integrations do not need the channel id as they return a response immediately. Interval integrations, on the other hand, need the channel id to construct a webhook return URI. This URI will be used to send data back to the channel.
-
-Integration settings is an array of objects (or records) defined by the creator. For each organisation, this defined settings record is used to display a UI which an organisation can use to set values based on their need. The integration creator is solely responsible for parsing and interpreting the settings. All Telex does is pass the integration settings to the corresponding integration if that integration is enabled for a channel.
 
 ## Output Integrations
 
