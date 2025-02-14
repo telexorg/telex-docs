@@ -11,7 +11,7 @@ Telex's integration spec supports multiple use-cases, from custom data aggregato
 The JSON content for an integration has four important properties:
 
 1. descriptions - app_name, app_description, app_url
-2. [integration_type](/docs/Integrations/intro.md#Integration Types)
+2. [integration_type](/docs/Integrations/intro.md#Interval%20Integrations)
 3. integration_category - one of [the available categories](/docs/Integrations/integration-categories.md)
 4. [settings](/docs/Integrations/settings.md)
 5. `target_url` and/or `tick_url`
