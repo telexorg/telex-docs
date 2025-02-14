@@ -36,6 +36,7 @@ The JSON snippet below outlines a generic representation of a modifier integrati
       "app_url": "URL to the application or service.",
       "background_color": "#HEXCODE"
     },
+    "integration_category": "Monitoring & Logging",
     "integration_type": "modifier",
     "is_active": false,
     "output": [
@@ -124,6 +125,7 @@ The JSON snippet below outlines a generic representation of an interval integrat
       "app_url": "URL to the application or service.",
       "background_color": "#HEXCODE"
     },
+    "integration_category": "Monitoring & Logging",
     "integration_type": "interval",
     "is_active": false,
     "output": [
@@ -198,4 +200,6 @@ As mentioned earlier, an interval integration will only need the target URL if i
 
 #### Sending Data to Telex
 
-Since interval integrations need to send data back to Telex, they must construct the send back URL using the channel_id.
+For interval integrations, Telex will send a return_url in its /tick_url request so that the integration can send back to the channel after its done processing. 
+
+NB: This is only available to the interval_inregrations.
