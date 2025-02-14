@@ -12,8 +12,9 @@ The JSON content for an integration has four important properties:
 
 1. descriptions - app_name, app_description, app_url
 2. integration_type
-3. settings
-4. `target_url` and/or `tick_url`
+3. integration_category - one of [the available categories](/docs/Integrations/integration-categories.md)
+4. settings
+5. `target_url` and/or `tick_url`
 
 The integration_type determines if an integration will need a target_url, a tick_url, or both. Integrations of type "modifier" only need target_url. This is where they will receive the Telex channel payload. Integrations of type "interval" strictly need a tick_url. Telex will call this URL when the required interval is reached. This allows the interval integration to complete its processing and send back data to Telex via the channel webhook when it is ready. The sections below contain a deeper view of both integration types and their caveats.
 
