@@ -3,7 +3,6 @@
 This page details the steps to build a simple modifier integration that repeats words. Given a string "Don! Well, look who we've got here.", and settings specifying the target words as "Don", and "Well", it should return "Don Don Don! Well Well Well, look who we've got here". It's silly but it showcases how a custom integration might be built.
 
 ---
-
 ## 1. Prerequisites
 
 Before you begin, ensure you have the following:
@@ -16,7 +15,7 @@ Before you begin, ensure you have the following:
 
 ## 2. API Reference
 
-For modifier-type integrations, you need to define a **POST endpoint** that serves as the entry point for processing incoming messages. This endpoint should be specified as the `target_url` in the integration's JSON configuration.
+For modifier-type integrations,we need to define a **POST endpoint** that serves as the entry point for processing incoming messages. This endpoint should be specified as the `target_url` in the integration's JSON configuration. Every integration should expose an endpoint that accepts `channel_id` `settings`, and `message` in the request payload.
 
 ### Endpoint: Format Message
 
@@ -89,8 +88,7 @@ For modifier-type integrations, you need to define a **POST endpoint** that serv
 
 1. **Send a POST request** to `/format-message` with the message payload.
 2. **Message formatting is applied** based on the defined settings.
-3. **A response is returned** containing the formatted message.
-4. **The formatted message is sent to Telex** via `https://ping.telex.im/v1/return/{channel_id}`.
+3. **The formatted message is returned as response to Telex**. The response body contains the modifications made to the message.
 
 ---
 
@@ -102,7 +100,7 @@ The service processes the message by:
 2. Applying transformations, including:
    - Truncating messages that exceed `maxMessageLength`.
    - Repeating words based on `repeatWords` and `noOfRepetitions`.
-3. Sending the formatted message back to the client and forwarding it to Telex.
+3. Retrieving the formatted message.
 
 ### Implementing the HTTP Handler
 
@@ -132,27 +130,6 @@ func handleIncomingMessage(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(response)
-
-	sendMessageToTelex("https://ping.telex.im/v1/return/", msgReq.ChannelID, response)
-}
-```
-
-### Sending Messages to Telex
-
-The `sendMessageToTelex` function sends the formatted message to a webhook URL:
-
-```go
-func sendMessageToTelex(webhookURL, channelID string, message map[string]string) {
-	payload := map[string]any{"channel_id": channelID, "message": message}
-	data, _ := json.Marshal(payload)
-
-	resp, err := http.Post(fmt.Sprintf("%s%s", webhookURL, channelID), "application/json", bytes.NewBuffer(data))
-	if err != nil {
-		log.Printf("Failed to send message: %v", err)
-		return
-	}
-	defer resp.Body.Close()
-	log.Printf("Message sent with status: %s", resp.Status)
 }
 ```
 
@@ -241,14 +218,14 @@ Logs formatted messages and errors using `log.Printf` for debugging and monitori
 
 ---
 
-## 8. External Communication
+<!-- ## 8. External Communication
 
 - The service sends formatted messages to Telex using the webhook endpoint: `https://ping.telex.im/v1/return/{channel_id}`.
-- If the request fails, an error message is logged.
+- If the request fails, an error message is logged. -->
 
 ---
 
-## 9. Example Usage
+## 8. Example Usage
 
 ### Sample cURL Request
 
@@ -279,7 +256,7 @@ This request will return:
 
 ---
 
-## 10. Setting Up Telex Integration
+## 9. Setting Up Telex Integration
 
 1. Go to the **Integrations** section in Telex.
 2. Create a new **outbound** integration.
@@ -290,55 +267,69 @@ This request will return:
 
 ```json
 {
-  "date": {
-    "created_at": "2025-01-27",
-    "updated_at": "2025-01-27"
-  },
-  "descriptions": {
-    "app_description": "A message formatter bot that processes incoming messages and sends back formatted responses.",
-    "app_logo": "https://example.com/message-formatter-logo.png",
-    "app_name": "Message Formatter",
-    "app_url": "https://example.com/message-formatter",
-    "background_color": "#0000FF"
-  },
-  "target_url": "https://<server-url>/format-message",
-  "key_features": [
-    "Receive messages from Telex channels.",
-    "Format messages based on predefined templates or logic.",
-    "Send formatted responses back to the channel.",
-    "Log message formatting activity for auditing purposes."
-  ],
-  "settings": [
-    {
-      "label": "maxMessageLength",
-      "type": "number",
-      "description": "Set the maximum length for incoming messages to format.",
-      "default": 30,
-      "required": true
-    },
-    {
-      "label": "repeatWords",
-      "type": "multi-select",
-      "description": "Set the words that need to be repeated.",
-      "default": "world, happy",
-      "required": true
-    },
-    {
-      "label": "noOfRepetitions",
-      "type": "number",
-      "description": "Set the number of repetitions for words that need to be repeated.",
-      "default": 2,
-      "required": true
-    }
-  ],
-  "is_active": true
+	"data": {
+		"author": "Micah Shallom",
+		"date": {
+			"created_at": "2025-02-13",
+			"updated_at": "2025-02-13"
+		},
+		"descriptions": {
+			"app_description": "A message formatter bot that processes incoming messages and sends back formatted responses.",
+			"app_logo": "https://media.tifi.tv/telexbucket/public/logos/formatter.png",
+			"app_name": "Message Formatter",
+			"app_url": "https://txtformat.com/",
+			"background_color": "#ffffff"
+		},
+		"integration_category": "Communication & Collaboration",
+		"integration_type": "modifier",
+		"is_active": true,
+		"key_features": [
+			"Receive messages from Telex channels.",
+			"Format messages based on predefined templates or logic.",
+			"Send formatted responses back to the channel.",
+			"Log message formatting activity for auditing purposes."
+		],
+		"permissions": {
+			"events": [
+				"Receive messages from Telex channels.",
+				"Format messages based on predefined templates or logic.",
+				"Send formatted responses back to the channel.",
+				"Log message formatting activity for auditing purposes."
+			]
+		},
+		"settings": [
+			{
+				"default": 100,
+				"label": "maxMessageLength",
+				"required": true,
+				"type": "number"
+			},
+			{
+				"default": "world,happy",
+				"label": "repeatWords",
+				"required": true,
+				"type": "multi-select"
+			},
+			{
+				"default": 2,
+				"label": "noOfRepetitions",
+				"required": true,
+				"type": "number"
+			}
+		],
+		"target_url": "https://system-integration.telex.im/format-message",
+		"tick_url": "https://system-integration.telex.im/format-message",
+		"website": "https://telex.im"
+	}
 }
 ```
 
----
+## Using the Integration
 
-## 11. Conclusion
+Add the integration json URL upon creation of the Integration
 
-This documentation provides all necessary details for developers to integrate and utilize the **Telex Word Repeater Integration** efficiently. Ensure that your request payloads are structured correctly to avoid errors. Happy coding! Love from Telex ❤️.
 
----
+
+
+
+

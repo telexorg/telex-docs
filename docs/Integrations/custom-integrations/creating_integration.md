@@ -17,6 +17,31 @@ The JSON content for an integration has four important properties:
 
 The integration_type determines if an integration will need a target_url, a tick_url, or both. Integrations of type "modifier" only need target_url. This is where they will receive the Telex channel payload. Integrations of type "interval" strictly need a tick_url. Telex will call this URL when the required interval is reached. This allows the interval integration to complete its processing and send back data to Telex via the channel webhook when it is ready. The sections below contain a deeper view of both integration types and their caveats.
 
+### Category
+
+Integrations fall into diverse categories depending on their functionality and use-case. The category is a string that describes the integration's primary function. Some examples of categories include:
+
+- Monitoring & Logging
+- Communication & Collaboration
+- Security & Compliance
+- Performance Monitoring
+- Website Uptime
+- Social Media Management
+- CRM & Customer Support
+- Marketing Automation
+- Data Analytics & Visualization
+- Finance & Payments
+- Project Management
+- E-commerce & Retail
+- AI & Machine Learning
+- Task Automation
+- Cloud Services
+- Human Resources & Payroll
+- Email & Messaging
+- IT Service Management
+- Development & Code Management
+- DevOps & CI/CD
+
 ### Modifier Integration Type
 
 The JSON snippet below outlines a generic representation of a modifier integration. You can copy it as the starting point for your custom integration.
@@ -36,6 +61,7 @@ The JSON snippet below outlines a generic representation of a modifier integrati
             "background_color": "#HEXCODE"
         },
         "integration_type": "modifier",
+        "integration_category": "Communication & Collaboration",
         "is_active": false,
         "output": [
             {
@@ -135,6 +161,7 @@ The JSON snippet below outlines a generic representation of an interval integrat
             "background_color": "#HEXCODE"
         },
         "integration_type": "interval",
+        "integration_category": "Communication & Collaboration",
         "is_active": false,
         "output": [
             {
