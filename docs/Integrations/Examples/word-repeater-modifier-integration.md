@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Modifier Custom Integration - Word Repeater
 
 This page details the steps to build a simple modifier integration that repeats words. Given a string "Don! Well, look who we've got here.", and settings specifying the target words as "Don", and "Well", it should return "Don Don Don! Well Well Well, look who we've got here". It's silly but it showcases how a custom integration might be built.
