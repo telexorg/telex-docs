@@ -200,6 +200,6 @@ As mentioned earlier, an interval integration will only need the target URL if i
 
 #### Sending Data to Telex
 
-For interval integrations, Telex will send a return_url in its /tick_url request so that the integration can send back to the channel after its done processing. 
+For interval integrations, Telex will send a return_url in its /tick_url request so that the integration can send back to the channel after it's done processing.
 
-NB: This is only available to the interval_inregrations.
+NB: This is only available to the interval integrations.
