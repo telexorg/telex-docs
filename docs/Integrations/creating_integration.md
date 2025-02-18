@@ -109,7 +109,7 @@ The JSON snippet below outlines a generic representation of a modifier integrati
 
 ### Interval Integration Type
 
-The JSON snippet below outlines a generic representation of an interval integration. You can copy it as thr starting point for your custom integration.
+The JSON snippet below outlines a generic representation of an interval integration. You can copy it as the starting point for your custom integration.
 
 ```json
 {
@@ -203,3 +203,94 @@ As mentioned earlier, an interval integration will only need the target URL if i
 For interval integrations, Telex will send a return_url in its /tick_url request so that the integration can send back to the channel after it's done processing.
 
 NB: This is only available to the interval integrations.
+
+
+
+### Output Integration Type
+
+The JSON snippet below outlines a generic representation of an output integration. You can copy it as the starting point for your custom integration.
+
+```json
+{
+  "data": {
+    "date": {
+      "created_at": "YYYY-MM-DD",
+      "updated_at": "YYYY-MM-DD"
+    },
+    "descriptions": {
+      "app_description": "A brief description of the application functionality.",
+      "app_logo": "URL to the application logo.",
+      "app_name": "Name of the application.",
+      "app_url": "URL to the application or service.",
+      "background_color": "#HEXCODE"
+    },
+    "integration_category": "Communication & Collaboration",
+    "integration_type": "output",
+    "is_active": false,
+    "output": [
+      {
+        "label": "output_channel_1",
+        "value": true
+      },
+      {
+        "label": "output_channel_2",
+        "value": false
+      }
+    ],
+    "key_features": [
+      "Feature description 1.",
+      "Feature description 2.",
+      "Feature description 3.",
+      "Feature description 4."
+    ],
+    "permissions": {
+      "monitoring_user": {
+        "always_online": true,
+        "display_name": "Performance Monitor"
+      }
+    },
+    "settings": [
+      {
+        "label": "interval",
+        "type": "text",
+        "required": true,
+        "default": "* * * * *"
+      },
+      {
+        "label": "Key",
+        "type": "text",
+        "required": true,
+        "default": "1234567890"
+      },
+      {
+        "label": "Do you want to continue",
+        "type": "checkbox",
+        "required": true,
+        "default": "Yes"
+      },
+      {
+        "label": "Provide Speed",
+        "type": "number",
+        "required": true,
+        "default": "1000"
+      },
+      {
+        "label": "Sensitivity Level",
+        "type": "dropdown",
+        "required": true,
+        "default": "Low",
+        "options": ["High", "Low"]
+      },
+      {
+        "label": "Alert Admin",
+        "type": "multi-checkbox",
+        "required": true,
+        "default": "Super-Admin",
+        "options": ["Super-Admin", "Admin", "Manager", "Developer"]
+      }
+    ],
+    "tick_url": "URL for subscribing to Telex's clock.",
+    "target_url": "Optional URL for getting data from the Telex channel"
+  }
+}
+```
