@@ -202,9 +202,15 @@ As mentioned earlier, an interval integration will only need the target URL if i
 
 For interval integrations, Telex will send a return_url in its /tick_url request so that the integration can send back to the channel after it's done processing.
 
+##### Status Values
+
+Integrations must return a `status` field with one of the following values:
+
+- `success`: Indicates that the operation was completed successfully.
+- `error`: Indicates that an error occurred.
+- `warning`: Indicates a non-critical issue that requires attention but does not completely break the system.
+
 NB: This is only available to the interval integrations.
-
-
 
 ### Output Integration Type
 
