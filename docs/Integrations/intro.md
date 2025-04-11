@@ -19,6 +19,9 @@ Modifier integrations are integrations that modify new messages entering a chann
 ```json
 {
   "message": "message",
+  "channel_id": "channel-id",
+  "org_id": "org-id",
+  "thread_id": "thread-id",
   "settings": [
     {
       "label": "setting_label",
