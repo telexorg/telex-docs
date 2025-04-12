@@ -4,17 +4,17 @@ sidebar_position: 4
 
 # Creating Integrations
 
-Telex's integration spec supports multiple use-cases, from custom data aggregators, to summarisers, and translators. You can chose to create an integration specific to your organisation's use, or create an integration that can be used by all Telex users across different organisations. The first step to creating an integration is defining the JSON spec. This JSON spec contains vital information on the name, target url, tick url (for interval type integrations), and settings. In fact, Telex only requests for this JSON, supplied via a URL, to add an integration to an organisation. This means you can define a new Telex integration by hosting a JSON file.
+Telex's integration spec supports multiple use-cases, from custom data aggregators, to summarisers, translators and AI agents. You can chose to create an integration specific to your organisation's use, or create an integration that can be used by all Telex users across different organisations. The first step to creating an integration is defining the JSON spec. This JSON spec contains vital information on the name, target url, tick url (for interval type integrations), and settings. In fact, Telex only requests for this JSON, supplied via a URL, to add an integration to an organisation. This means you can define a new Telex integration by hosting a JSON file.
 
 ## Integration JSON
 
-The JSON content for an integration has four important properties:
+The JSON content for an integration has some important properties:
 
 1. descriptions - app_name, app_description, app_url
 2. [integration_type](/docs/Integrations/intro.md#Interval%20Integrations)
 3. integration_category - one of [the available categories](/docs/Integrations/integration-categories.md)
 4. [settings](/docs/Integrations/settings.md)
-5. `target_url` and/or `tick_url`
+5. `target_url` and/or `tick_url`.
 
 The integration_type determines if an integration will need a target_url, a tick_url, or both. Integrations of type "modifier" only need target_url. This is where they will receive the Telex channel payload. Integrations of type "interval" strictly need a tick_url. Telex will call this URL when the required interval is reached. This allows the interval integration to complete its processing and send back data to Telex via the channel webhook when it is ready. The sections below contain a deeper view of both integration types and their caveats.
 
