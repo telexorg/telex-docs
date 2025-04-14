@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-# Interval Custom Integration - Uptime Monitor
+# Interval Custom Agent - Uptime Monitor
 
-This page explains how to create a custom integration for a website uptime monitor. The integration will check the status of a website at set intervals and post the result to the Telex channel where is it activated.
+This page explains how to create a custom agent for a website uptime monitor. The agent will check the status of a website at set intervals and post the result to the Telex channel where is it activated.
 
 ---
 
@@ -45,7 +45,7 @@ Now we’re ready to write some code.
 
 ## 2. Adding the `/integration.json` Endpoint
 
-Telex integrations are implemented as web services and must expose a route that returns their JSON schema. This schema defines all the important data Telex needs to interact with the integration. Refer to the [Creating Integrations](/docs/Integrations/creating_integration) guide for more information.
+Telex agents are implemented as web services and must expose a route that returns their JSON schema. This schema defines all the important data Telex needs to interact with the agent. Refer to the [Creating Agents](/docs/Integrations/creating_integration) guide for more information.
 
 Open `main.md` and start with this code:
 
@@ -78,9 +78,9 @@ def get_integration_json(request: Request):
     }
 ```
 
-The integration type is defined as `interval`, and we've added three settings:
+The agent integration type is defined as `interval`, and we've added three settings:
 
-1. `site-1` and `site-2` are text fields for the URLs of the websites to monitor. You can add more sites as needed. More sites will mean more checks for this integration so add them wisely if you do not have a lot of resources.
+1. `site-1` and `site-2` are text fields for the URLs of the websites to monitor. You can add more sites as needed. More sites will mean more checks for this agent, so add them wisely if you do not have a lot of resources.
 2. `interval` is a text field for the cron expression defining the interval.
 
 ### Run the Server
@@ -148,7 +148,7 @@ async def monitor_task(payload: MonitorPayload):
 
 ## 4. Adding the `/tick` Endpoint
 
-Telex maintains the clock time for interval integrations. When the defined interval is reached, Telex will call the `/tick` endpoint to initiate uptime checks. This endpoint should expect a POST request with the payload containing the channel ID, return URL, and settings. Telex will send these details to the endpoint when it's time to check the uptime. The handler for this endpoint should generally do its processing in the background so that it can handle new requests quickly. This also gives it time to complete its processing before sending the response back to Telex via the return URL.
+Telex maintains the clock time for interval integration agents. When the defined interval is reached, Telex will call the `/tick` endpoint to initiate uptime checks. This endpoint should expect a POST request with the payload containing the channel ID, return URL, and settings. Telex will send these details to the endpoint when it's time to check the uptime. The handler for this endpoint should generally do its processing in the background so that it can handle new requests quickly. This also gives it time to complete its processing before sending the response back to Telex via the return URL.
 
 ```py
 

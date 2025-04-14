@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# Modifier Custom Integration - Word Repeater
+# Modifier Custom Agent - Word Repeater
 
-This page details the steps to build a simple modifier integration that repeats words. Given a string "Don! Well, look who we've got here.", and settings specifying the target words as "Don", and "Well", it should return "Don Don Don! Well Well Well, look who we've got here". It's silly but it showcases how a custom integration might be built.
+This page details the steps to build a simple modifier agent that repeats words. Given a string "Don! Well, look who we've got here.", and settings specifying the target words as "Don", and "Well", it should return "Don Don Don! Well Well Well, look who we've got here". It's silly but it showcases how a custom agent might be built.
 
 ---
 ## 1. Prerequisites
@@ -19,7 +19,7 @@ Before you begin, ensure you have the following:
 
 ## 2. API Reference
 
-For modifier-type integrations,we need to define a **POST endpoint** that serves as the entry point for processing incoming messages. This endpoint should be specified as the `target_url` in the integration's JSON configuration. Every integration should expose an endpoint that accepts `channel_id` `settings`, and `message` in the request payload.
+For modifier-type agents, we need to define a **POST endpoint** that serves as the entry point for processing incoming messages. This endpoint should be specified as the `target_url` in the agent integration's JSON configuration. Every agent should expose an endpoint that accepts `channel_id` `settings`, and `message` in the request payload.
 
 ### Endpoint: Format Message
 
@@ -88,7 +88,7 @@ For modifier-type integrations,we need to define a **POST endpoint** that serves
 
 ---
 
-## 3. Integration Workflow
+## 3. Agent Workflow
 
 1. **Send a POST request** to `/format-message` with the message payload.
 2. **Message formatting is applied** based on the defined settings.
@@ -260,14 +260,14 @@ This request will return:
 
 ---
 
-## 9. Setting Up Telex Integration
+## 9. Setting Up Telex Agent
 
-1. Go to the **Integrations** section in Telex.
-2. Create a new **outbound** integration.
-3. Provide a URL containing the JSON configuration for the integration.
-4. Save the integration and retrieve the URL of the channel webhook.
+1. Go to the **Agents** section in Telex.
+2. Create a new **outbound** agent.
+3. Provide a URL containing the JSON configuration for the agent.
+4. Save the agent and retrieve the URL of the channel webhook.
 
-### Sample Integration JSON Configuration
+### Sample Agent's Integration JSON Configuration
 
 ```json
 {
@@ -328,9 +328,9 @@ This request will return:
 }
 ```
 
-## Using the Integration
+## Using the Agent
 
-Add the integration json URL upon creation of the Integration
+Add the agent's integration json URL upon creation of the Agent
 
 
 

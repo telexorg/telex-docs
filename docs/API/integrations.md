@@ -1,4 +1,4 @@
-# Integrations
+# Agents
 
 ## Overview
 The **Integrations API** provides endpoints to manage integrations for organizations, including Slack integrations, integration creation, retrieval, updates, and deletions. This is organized* into **Integrations**, **Integration Settings**, **Channel Integrations** and **Custom Integrations**.

@@ -1,16 +1,16 @@
 ---
-sidebar_position: 6
+sidebar_position: 3
 is_draft: true
 ---
 
 # AI Agents
-AI Agents are specialized integrations designed for conversational and automated interactions within Telex. They extend the core integration framework with features like `auth_callback` for setup, `bot` for enabling chat capabilities, and `listening_mode` to control message handling. These agents can send and receive messages, participate in threads, and operate in channels or direct messages, making them versatile tools for tasks like monitoring, summarization, and user assistance.
+AI Agents are specialized agents designed for conversational and automated interactions within Telex. They extend the core agent framework with features like `auth_callback` for setup, `bot` for enabling chat capabilities, and `listening_mode` to control message handling. These agents can send and receive messages, participate in threads, and operate in channels or direct messages, making them versatile tools for tasks like monitoring, summarization, and user assistance.
 
-AI Agents are built on the same core architecture as integrations but have additional specifications and behaviors tailored for conversational use and automated responses. Just like integrations. it can be either an interval, modifier or output integration as discussed in [Telex Integration Overview](/docs/Integrations/intro.md).
+AI Agents are built on the same core architecture as standard agents but have additional specifications and behaviors tailored for conversational use and automated responses. Just like the agents. it can be either an interval, modifier or output agent as discussed in [Telex Agent Overview](/docs/Integrations/intro.md).
 
 ## Agent Json Spec
 
-Just like integrations, the agent spec is a JSON object used to register and configure the AI agent within Telex. It includes all the standard [integration spec fields](/docs/Integrations/intro.md), and the following additional fields:
+Just like standard agents, the agent spec is a JSON object used to register and configure the agents within Telex. For AI agents, it includes all the standard [Agent spec fields](/docs/Integrations/intro.md), and the following additional fields:
 
 ```json
 {
