@@ -14,7 +14,7 @@ Just like integrations, the agent spec is a JSON object used to register and con
 
 ```json
 {
-  "auth_callback": "URL",
+  ... // initial integration json fields
   "bot": "boolean",
   "listening_mode": ["all", "mentions"],
   "bot_details": {
@@ -26,24 +26,6 @@ Just like integrations, the agent spec is a JSON object used to register and con
 ```
 
 ### Field Breakdown
-
- **auth_callback: URL**
-
-This is a required field `string` for agents containing the agent's auth_callback url
-
-This is an endpoint on the agent's server that Telex will call via a `POST` request when the agent is activated within an organization. Think of it as a setup hook. This means that when your integration is added to any telex organization, your auth_callback url is called with the following payloads.
-
-**auth payload sent by Telex:**
-```json
-{
-  "org_id": "<string>",
-  "api_key": "<string>"
-}
-```
-
-The `org_id` is the identifier of the organization the agent was added to. The `api_key` is a secret token that the agent can use to interact with Telex (e.g., sending messages, uploading files, modifying org-level settings). This means that you must expose an auth_callback endpoint on your server, where you will receive the org_id and the api key for any organization your integration is added to.
-
----
 
 **bot: boolean**
 
@@ -72,8 +54,76 @@ This provides us with the details for the agent
 -  `"avatar_url:"`: The logo of the agent
 - `"descriptions"`: The description for the agent
 
+
+## Agent Authentication and Setup Flow
+When an AI Agent is installed into an organization on Telex, a two-step registration process ensures both sides — Telex and the Agent, are aware and ready to communicate securely.
+
+
+### 1️⃣ Auth Callback
+
+Once an AI Agent is added to a Telex organization, Telex initiates an authentication handshake to securely register the agent with that specific organization. As part of this handshake, Telex will send the organization’s unique `org_id` along with an `api_key` — this key is scoped specifically for the organization.
+
+Telex performs this by sending a `POST` request to your agent's `auth_callback` URL:
+
+```
+{app_url}/auth_callback
+```
+
+Here, `app_url` refers to the base URL of your agent’s server, which you define in your agent spec. The `auth_callback` path is expected to be an endpoint that your server exposes to handle this registration handshake.
+
+In other words, the full `auth_callback` URL is formed by combining your defined `app_url` with `/auth_callback`. Make sure your server exposes an endpoint that matches this URL so it can properly receive the authentication handshake.
+
+So, once your agent is added to any Telex organization, Telex will send a `POST` request to this `auth_callback` endpoint with the following payload:
+
+**Auth Payload:**
+
+```json
+{
+  "org_id": "<string>",
+  "api_key": "<string>"
+}
+```
+
+- **org_id**: A unique identifier for the organization that has installed your agent.
+- **api_key**: A secure, organization-specific token that your agent must use to authenticate all future requests to Telex on behalf of this organization.
+
+> ⚡ **Important:** For each organization that installs your agent, telex will send a unique `api_key`. You must store and associate each `api_key` with its corresponding `org_id`.
+
+---
+
+### 2️⃣ Agent Follow-Up: Confirming Registration
+
+After receiving the `auth_callback` payload from Telex, your agent is expected to complete the registration handshake by making a follow-up `POST` request back to Telex. This follow-up request must include the `api_key` (received from Telex in the `auth_callback` payload) as part of the request headers and sent to the URL below.
+
+**Request URL:**
+
+```
+POST https://ping.telex.im/api/v1/agents/callback
+```
+
+**Headers**
+```
+X-TELEX-API-KEY: <api_key>
+```
+
+>⚡ **Important**:
+The `api_key` must be included in the header exactly as shown above.
+Your agent's setup will not be considered complete until this confirmation request has been successfully made.
+
+---
+
+### 🔐 Security Consideration
+
+The `api_key` is your agent’s authentication credential and should be handled like a password:
+
+- Store it securely on your backend.
+- Never log it, share it, or expose it in client-side code.
+- Each organization will receive a distinct `api_key` — never assume one key applies globally.
+
+This separation ensures that even if one key is compromised, only the affected organization’s access is at risk, not all your installations.
+
 ## Sending Messages to Telex
-When users interact in Telex — whether in channels or direct messages — messages intended for your AI Agent are routed to the target_url you’ve specified in your integration.json. Along with these messages, Telex sends a structured payload that contains key details about the message, including the channel_id, org_id, and the is_dm flag for direct messages.
+When users interact in Telex — whether in channels or direct messages — messages intended for your AI Agent are routed to the target_url you’ve specified in your integration json spec. When sending a message, Telex sends a structured payload that contains key details about the message, including the `channel_id`, `org_id`, `thread_id` and the `is_dm` flag for direct messages.
 
 #### Incoming Message Payload Example
 
@@ -99,7 +149,7 @@ When users interact in Telex — whether in channels or direct messages — mess
 - `org_id`: Organization of the channel or DM the message is sent from.
 - `channel_id`: The ID of the channel or DM the message is sent from.
 - `thread_id` The thread ID of the message.
-- `message`: The actual message.
+- `message`: The actual message from telex.
 - `is_dm`: Set to `true` to indicate the message is a DM.
 - `settings`: The list of settings provided in the integration json for the user.
 
@@ -112,16 +162,16 @@ POST https://ping.telex.im/api/v1/return/<channel_id>
 ```
 Note: This request must be authenticated.
 
-### Authorization
+### Authorization For Messages
 
-Agents must authenticate with Telex while sending messages by including in their request headers, the API key that was sent to its auth_callback url. It should be defined like this:
+Agents must authenticate with Telex while sending messages by including in their request headers, the API key that was sent to its auth_callback url during setup. It should be always be defined like this:
 
 **Header**
 ```http
-X-Telex-API-Key: <api_key>
+X-TELEX-API-KEY: <api_key>
 ```
 
-As stated before, the API key is provided by Telex via the `auth_callback` url specified in the Json spec of the agent, and grants the agent scoped access to:
+As stated before, the API key is provided by Telex via the `auth_callback` endpoint of the agent, and grants the agent scoped access to:
 
 - Send messages to channels, groups, or direct messages.
 - Upload files.
@@ -133,7 +183,7 @@ Be sure to keep this key secure, as it grants your agent privileged access to se
 
 ### Sending Messages to a Channel
 
-To send a message to a channel, you simple make a post request to the endpoint below, with the channel id attached:
+To send a message to a channel, you simple make a `POST` request to the endpoint below, with the channel id attached:
 
 **Endpoint**
 
@@ -143,7 +193,7 @@ POST https://ping.telex.im/api/v1/return/<channel_id>
 
 **Headers**
 ```
-X-Telex-API-Key: <api_key>
+X-TELEX-API-KEY: <api_key>
 ```
 
 **Request Body Example**
@@ -170,7 +220,7 @@ X-Telex-API-Key: <api_key>
 
 ### Sending Messages in DMs
 
-Telex lets you know whether the message is from a DM by including the `is_dm` flag in the payload it sends to your target URL. The channel_id applies for both channel messages and DMs. Hence, you simple just have to respond by attaching the channel_id to the endpoint:
+Telex lets you know whether the message is from a DM by including the `is_dm` flag in the payload it sends to your target URL. The channel_id applies for both channel messages and DMs. Hence, you simple have to respond by attaching the channel_id to the endpoint:
 
 **Endpoint**
 ```
@@ -179,7 +229,7 @@ POST https://ping.telex.im/api/v1/return/<channel_id>
 
 **Headers**
 ```
-X-Telex-API-Key: <api_key>
+X-TELEX-API-KEY: <api_key>
 ```
 
 **Request Body Example (DM)**
@@ -195,14 +245,13 @@ X-Telex-API-Key: <api_key>
 }
 ```
 
-
 - `channel_id`: The ID of the target DM.
 
 ---
 
 ### Replying Messages in a Thread
 
-To reply to a specific message in a thread, your agent needs to include the `thread_id` in the request body and set the `reply` to `true`. This ensures the message is posted as part of the ongoing thread.
+To reply to a specific message within a thread, your agent must use the thread_id that was sent along with the message. Include this thread_id in the request body and set the `reply` field to `true`. This ensures the message is properly associated with the ongoing thread rather than creating a new one.
 
 **Endpoint**
 
@@ -212,7 +261,7 @@ POST https://ping.telex.im/api/v1/return/<channel_id>
 
 **Headers**
 ```
-X-Telex-API-Key: <api_key>
+X-TELEX-API-KEY: <api_key>
 ```
 
 **Request Body Example (Thread Reply)**
