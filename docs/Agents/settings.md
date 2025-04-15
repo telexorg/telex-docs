@@ -8,7 +8,7 @@ sidebar_position: 3
 
 Agents define the type of settings they want users to utilize to input the required data for the agent to function. An agent could define two text fields, and these fields will be used to create a settings entry for the user that activates it. The user can then input values in these text fields on his organization's Apps page. These settings will then be passed to the agent on every call, be it calls to /target_url or /tick_url.
 
-Telex has no business parsing the settings the agent defines except in the case of interval agents, and in this case, Telex only reads the "interval" field defined in the settings. The current version of Telex requires that this field is defined as a text field with expected values set using the crontab syntax. For more information, see the [Interval Integration](/docs/Integrations/intro#interval-integrations) section.
+Telex has no business parsing the settings the agent defines except in the case of interval agents, and in this case, Telex only reads the "interval" field defined in the settings. The current version of Telex requires that this field is defined as a text field with expected values set using the crontab syntax. For more information, see the [Interval agent](/docs/Integrations/intro#interval-integrations) section.
 
 The settings can be configured using JSON format and the following fields:
 

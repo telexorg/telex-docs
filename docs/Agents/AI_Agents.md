@@ -8,7 +8,7 @@ AI Agents are specialized agents designed for conversational and automated inter
 
 AI Agents are built on the same core architecture as standard agents but have additional specifications and behaviors tailored for conversational use and automated responses. Just like the agents. it can be either an interval, modifier or output agent as discussed in [Telex Agent Overview](/docs/Integrations/intro.md).
 
-## Agent Json Spec
+## AI Agent Json Spec
 
 Just like standard agents, the agent spec is a JSON object used to register and configure the agents within Telex. For AI agents, it includes all the standard [Agent spec fields](/docs/Integrations/intro.md), and the following additional fields:
 
@@ -164,7 +164,7 @@ Note: This request must be authenticated.
 
 ### Authorization For Messages
 
-Agents must authenticate with Telex while sending messages by including in their request headers, the API key that was sent to its auth_callback url during setup. It should be always be defined like this:
+Agents must authenticate with Telex while sending messages by including in their request headers, the API key that was sent to its auth_callback url during setup. It should always be defined like this:
 
 **Header**
 ```http

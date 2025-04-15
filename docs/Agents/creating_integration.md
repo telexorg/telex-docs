@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Creating Agents
 
-Telex's agent spec supports multiple use-cases, from custom data aggregators, to summarisers, translators and AI agents. You can chose to create an integration specific to your organisation's use, or create an integration that can be used by all Telex users across different organisations. The first step to creating an integration is defining the JSON spec. This JSON spec contains vital information on the name, target url, tick url (for interval type integrations), and settings. In fact, Telex only requests for this JSON, supplied via a URL, to add an agent to an organisation. This means you can define a new Telex agent by hosting a JSON file.
+Telex's agent spec supports multiple use-cases, from custom data aggregators, to summarisers, translators and AI agents. You can chose to create an agent specific to your organisation's use, or create an agent that can be used by all Telex users across different organisations. The first step to creating an agent is defining the JSON spec. This JSON spec contains vital information on the name, target url, tick url (for interval type agents), and settings. In fact, Telex only requests for this JSON, supplied via a URL, to add an agent to an organisation. This means you can define a new Telex agent by hosting a JSON file.
 
 ## Agent Integration JSON
 
@@ -202,7 +202,7 @@ As mentioned earlier, an interval agent will only need the target URL if it need
 
 #### Sending Data to Telex
 
-For interval agents, Telex will send a return_url in its /tick_url request so that the integration can send back to the channel after it's done processing.
+For interval agents, Telex will send a return_url in its /tick_url request so that the agent can send back to the channel after it's done processing.
 
 NB: This is only available to the interval agents.
 
