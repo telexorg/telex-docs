@@ -2,9 +2,9 @@
 sidebar_position: 4
 ---
 
-# Integration Categories
+# Agent Integration Categories
 
-Telex requires that integrations have an integration_category field that helps classify an integration. The different types available are:
+Telex requires that agents have an integration_category field that helps classify an agent. The different types available are:
 
 1. Monitoring & Logging
 1. Communication & Collaboration

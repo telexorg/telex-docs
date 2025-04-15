@@ -2,13 +2,13 @@
 sidebar_position: 3
 ---
 
-# Integration Settings Spec
+# Agent Settings Spec
 
 ## Overview
 
-Integrations define the type of settings they want users to utilize to input the required data for the integration to function. An integration could define two text fields, and these fields will be used to create a settings entry for the user that activates it. The user can then input values in these text fields on his organization's Apps page. These settings will then be passed to the integration on every call, be it calls to /target_url or /tick_url.
+Agents define the type of settings they want users to utilize to input the required data for the agent to function. An agent could define two text fields, and these fields will be used to create a settings entry for the user that activates it. The user can then input values in these text fields on his organization's Apps page. These settings will then be passed to the agent on every call, be it calls to /target_url or /tick_url.
 
-Telex has no business parsing the settings the integration defines except in the case of interval integrations, and in this case, Telex only reads the "interval" field defined in the settings. The current version of Telex requires that this field is defined as a text field with expected values set using the crontab syntax. For more information, see the [Interval Integration](/docs/Integrations/intro#interval-integrations) section.
+Telex has no business parsing the settings the agent defines except in the case of interval agents, and in this case, Telex only reads the "interval" field defined in the settings. The current version of Telex requires that this field is defined as a text field with expected values set using the crontab syntax. For more information, see the [Interval agent](/docs/Integrations/intro#interval-integrations) section.
 
 The settings can be configured using JSON format and the following fields:
 
@@ -18,7 +18,7 @@ The settings can be configured using JSON format and the following fields:
 - Dropdown
 - Number
 
-Each setting type has specific properties that define its behavior and appearance in the integration configuration interface. If a field is kept blank in the definition, Telex will display an empty field for the user to fill in. If a values is set in the definition, Telex will display that value on initial use. The user can then change the value if needed.
+Each setting type has specific properties that define its behavior and appearance in the agent configuration interface. If a field is kept blank in the definition, Telex will display an empty field for the user to fill in. If a value is set in the definition, Telex will display that value on initial use. The user can then change the value if needed. The value chosen or provided by the user is stored as `default`.
 
 ---
 

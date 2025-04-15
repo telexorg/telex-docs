@@ -16,7 +16,7 @@ To get started with Telex, create an account at https://telex.im/auth/sign-up. Y
 
 ### Messages on Telex channels
 
-Telex by default can serve as a chat application for teams. Once a message enters a channel, all team members present in that channel receive the message in real time. This also means that when a third-party like a bash script calling the channel's webhook or a custom integration sends a message to the channel, all subscribed members and tools receive the message in real time.
+Telex by default can serve as a chat application for teams. Once a message enters a channel, all team members present in that channel receive the message in real time. This also means that when a third-party like a bash script calling the channel's webhook or a custom agent sends a message to the channel, all subscribed members and tools receive the message in real time.
 
 The gif below showcases the process of registering a new account on Telex and sending your first message.
 
@@ -25,7 +25,7 @@ The gif below showcases the process of registering a new account on Telex and se
 ### Webhooks on Telex
 
 
-Telex is designed for webhook events and retransmission. It allows you log events as they occur without strict rate limiting. Say you desire to see new signups on Slack and email simultaneously, you could achieve this by activating the existing Slack and Email integrations on a channel. Doing this saves you the stress of creating a new Slack app or dealing with SMTP and the likes. An integration handles it all for you through Telex! The only requirement is you calling the Webhook URL of the channel where you activated the integrations.  
+Telex is designed for webhook events and retransmission. It allows you log events as they occur without strict rate limiting. Say you desire to see new signups on Slack and email simultaneously, you could achieve this by activating the existing Slack and Email agents on a channel. Doing this saves you the stress of creating a new Slack app or dealing with SMTP and the likes. An agent handles it all for you through Telex! The only requirement is you calling the Webhook URL of the channel where you activated the agents.  
 
 Telex's design allows you to collect any type of event from your application and send them to downstream systems like Slack, Discord, Teams, etc.
 
@@ -35,4 +35,4 @@ The gif below shows the process of creating your first channel and making your f
 ![Create channel and send first webhooks](/gif/create-first-channel-and-send-first-webhook.gif)
 
 
-There are tons of creative ways to use Telex, and its beauty ultimately lies in the freedom of building custom integrations. You can build a simple app that connects to the Telex system and modify data coming into channels. You can also build an app that can transmit data to Telex at set intervals. Telex maintains the timing and your app simply responds when Telex calls it. Get started by building your first integration.
+There are tons of creative ways to use Telex, and its beauty ultimately lies in the freedom of building custom agents. You can build a simple app that connects to the Telex system and modify data coming into channels. You can also build an app that can transmit data to Telex at set intervals. Telex maintains the timing and your app simply responds when Telex calls it. Get started by building your first agent.
