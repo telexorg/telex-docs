@@ -1,0 +1,149 @@
+---
+sidebar_position: 7
+is_draft: true
+---
+
+# Telex Database for Agents
+
+The Telex Database is built on MongoDB. It is designed to support AI agents in managing and retrieving data efficiently. It provides a structured environment for storing agent-related information, ensuring high performance and reliability.
+
+## Key Features
+
+- **MongoDB-Powered Scalability**: Handles large volumes of data seamlessly using MongoDB's distributed architecture.
+- **Performance**: Optimized for quick data retrieval and updates with MongoDB's indexing and query capabilities.
+- **Security**: Implements advanced security measures, including MongoDB's built-in authentication and encryption features, to protect sensitive information.
+- **Flexibility**: Supports various data types and structures, leveraging MongoDB's schema-less design to accommodate diverse agent needs.
+
+## Use Cases
+
+1. **Agent State Management**: Store and retrieve the current state of AI agents.
+2. **Knowledge Base**: Maintain a repository of information that agents can query.
+3. **Task Tracking**: Log and monitor tasks assigned to agents.
+4. **Analytics**: Collect and analyze data to improve agent performance.
+# Agent Database API Documentation
+
+
+### Agent Database API
+This details the endpoints and usage for interacting with the Agent Database provided by Telex. Each agent is provisioned with a dedicated MongoDB collection where they can store and manage up to 100,000 schema-less documents.
+
+## Base URL
+
+```
+https://api.telex.im/api/v1
+```
+
+## Authentication
+
+All requests must be authenticated using an API key issued to the agent. Include the API key in the request header as follows:
+
+```
+X-TELEX-API-KEY: your-api-key-here
+```
+
+## Endpoints
+
+### Create Collection
+
+**POST** `/agent_db/collections`
+
+Create a new MongoDB collection for the agent.
+
+**Request Body**:
+
+```json
+{
+  "collection": "test_collection_2"
+}
+```
+
+**Note**: Each agent can only create **one** collection. Subsequent attempts will return an error.
+
+---
+
+### Add Document
+
+**POST** `/agent_db/collections/{collection_name}/documents`
+
+Add a new document to the specified MongoDB collection.
+
+**Request Body**:
+
+```json
+{
+  "document": {
+    "title": "Document Title",
+    "content": "Document content here.",
+    "timestamp": "2025-05-04T12:00:00Z"
+  }
+}
+```
+
+**Note**: Documents are schema-less. New fields can be introduced via this endpoint.
+
+---
+
+### Retrieve All Documents
+
+**GET** `/agent_db/collections/{collection_name}/documents`
+
+Retrieve all documents from a specified collection. Supports filtering.
+
+**Optional Request Body**:
+
+```json
+{
+  "filter": {
+    "age": 30
+  }
+}
+```
+
+---
+
+### Retrieve Document by ID
+
+**GET** `/agent_db/collections/{collection_name}/documents/{document_id}`
+
+Retrieve a single document from a collection using its unique ID.
+
+---
+
+### Update Document
+
+**PUT** `/agent_db/collections/{collection_name}/documents/{document_id}`
+
+Update a document by its ID. You can also introduce new fields when updating.
+
+**Request Body**:
+
+```json
+{
+  "document": {
+    "age": 45,
+    "status": "active"
+  }
+}
+```
+
+**Note**: Any field provided in the `document` object will overwrite or add to the existing document.
+
+---
+
+### Delete Document
+
+**DELETE** `/agent_db/collections/{collection_name}/documents/{document_id}`
+
+Delete a specific document by ID from the collection.
+
+---
+
+## Constraints
+
+* **One collection per agent**.
+* **Maximum of 100,000 documents per agent**.
+* **Schema-less data model**: Data structure validation and enforcement is the agent's responsibility.
+* **Collection deletion is not allowed**.
+
+---
+
+For further support, contact the Telex developer team or refer to the agent onboarding documentation.
