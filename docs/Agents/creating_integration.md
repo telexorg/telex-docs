@@ -4,7 +4,136 @@ sidebar_position: 2
 
 # Creating Agents
 
-Telex's agent spec supports multiple use-cases, from custom data aggregators, to summarisers, translators and AI agents. You can chose to create an agent specific to your organisation's use, or create an agent that can be used by all Telex users across different organisations. The first step to creating an agent is defining the JSON spec. This JSON spec contains vital information on the name, target url, tick url (for interval type agents), and settings. In fact, Telex only requests for this JSON, supplied via a URL, to add an agent to an organisation. This means you can define a new Telex agent by hosting a JSON file.
+Telex's agent spec supports multiple use-cases, from custom data aggregators, to summarisers, translators and AI agents. You can chose to create an agent specific to your organisation's use, or create an agent that can be used by all Telex users across different organisations.
+
+Agents on Telex are built using Google's Agent2Agent(A2A) Protocol. The A2A Protocol is an open standard designed to facilitate communication and interoperability between independent AI agent systems. In an ecosystem where agents might be built using different frameworks, languages, or by different vendors, A2A provides a common language and interaction model between all of them. You can read about the A2AProtocol in more detail [here](https://google-a2a.github.io/A2A/specification/)
+
+The first step to creating an agent is defining the JSON spec. This JSON spec contains vital information on the name, target url, tick url (for interval type agents), and settings. Telex requests for this JSON, supplied via a URL, to add an agent to an organisation. This means you can define a new Telex agent by hosting a JSON file.
+In the A2A protocol, this JSON spec is known as the Agent Card. The structure of the card is shown below:
+
+```json
+  {
+    name: string;
+    description: string;
+    url: string;
+    provider: AgentProvider;
+    version: string;
+    documentationUrl?: string;
+    capabilities: AgentCapabilities;
+    securitySchemes?: { [scheme: string]: SecurityScheme };
+    security?: { [scheme: string]: string[] }[];
+    defaultInputModes: string[];
+    defaultOutputModes: string[];
+    skills: AgentSkill[];
+    supportsAuthenticatedExtendedCard?: boolean;
+  }
+```
+:::note
+Fields suffixed with ? are optional
+:::
+
+### Field Definitions
+
+Field Name	Type	Required	Description
+id	string	Yes	Unique skill identifier within this agent.
+name	string	Yes	Human-readable skill name.
+description	string	Yes	Detailed skill description. CommonMark MAY be used.
+tags	string[]	Yes	Keywords/categories for discoverability.
+examples	string[]	No	Example prompts or use cases demonstrating skill usage.
+inputModes	string[]	No	Overrides defaultInputModes for this specific skill. Accepted MIME types.
+outputModes	string[]	No	Overrides defaultOutputModes for this specific skill. Produced MIME types.
+
+
+Sample Structure of an Agent card
+
+```
+  {
+    "name": "PingPongAgent",
+    "description": "An agent that responds 'pong' to 'ping'.",
+    "url": "https://telex.im",
+    "version": "1.0.0",
+    "provider": {
+      "organization": "Telex Org.",
+      "url": "https://telex.im"
+    },
+    "documentationUrl": "https://docs.telex.im/docs/Agents"
+    "capabilities": {
+      "streaming": false,
+      "pushNotifications": false,
+      "stateTransitionHistory": false
+    },
+    "defaultInputModes": ["text/plain"];
+    "defaultOutputModes": ["application/json", "text/plain"];
+    "skills": [
+      {
+        "id": "erig4w9292tb",
+        "name": "Ping Response",
+        "description": "Responds with 'pong' when given 'ping'.",
+        "inputModes": ["text"],
+        "outputModes": ["text"],
+        "examples": [
+          {
+            "input": { "parts": [{ "text": "ping", "contentType": "text/plain" }] },
+            "output": { "parts": [{ "text": "pong", "contentType": "text/plain" }] }
+          }
+        ]
+      }
+    ],
+    "supportsAuthenticatedExtendedCard": false
+  }
+```
+
+The agent card lives on a well-known url usually in the form `https://{your_domain}/.well-known/agent.json`. This url is what is used to add your agent to a Telex organization. 
+
+<!-- You can find more details about the agent card [here](https://google-a2a.github.io/A2A/specification/#5-agent-discovery-the-agent-card) -->
+
+
+## Request/Response Structure
+The A2A protocol uses JSON-RPC 2.0 as the payload format for it's requests and responses. JSON-RPC is a remote procedure call protocol encoded in JSON. It allows for calling methods on a remote server and getting responses. It's commonly used for web services and APIs to facilitate communication between a client and a server. Your agent should have two main endpoints:
+
+1. **_GET_** `/.well-known/agent.json` The well-known endpoint which returns the information about the agent on the agent card
+
+2. **_POST_** `/`  
+  In JSON-RPC, typically you have just one endpoint (like /) that handles all the method calls. The method you want to invoke is specified in the _method_ field of the JSON-RPC request. The server then looks at this method parameter and routes the request to the appropriate function or handler based on its value. This approach simplifies the API by having a single entry point for all remote procedure calls.
+
+  Sample Request
+
+  ```
+  {
+    "jsonrpc": "2.0", 
+    "method": "subtract", 
+    "params": {
+      "subtrahend": 23, 
+      "minuend": 42
+    }, 
+    "id": 3
+  }
+  ```
+
+  Sample Response(Success)
+  ```
+    {
+      "jsonrpc": "2.0", 
+      "result": 19, 
+      "id": 3
+    }
+  ```
+
+  Sample Response(Error)
+
+  ```
+  {
+    "jsonrpc": "2.0", 
+    "error": {
+      "code": -32600, 
+      "message": "Invalid Request"
+    }, 
+    "id": 3
+  }
+  ```
+
+
+
 
 ## Agent Integration JSON
 
