@@ -8,29 +8,30 @@ is_draft: true
 Telex provides a dedicated, document-based data store for agents. It is designed to support efficient storage and retrieval of agent-related information, allowing agents to store and retrieve structured data in a flexible, schema-less format. This design ensures high performance, reliability, and adaptability for diverse agent use cases.
 
 
+The Database API supports features like creating a collection or document, updating, retrieving, and deleting documents, thereby ensuring an efficient database management flow within Telex.
+
+
 ## Storage Allocation and Limitations
 
 | Feature                          | Description                             |
 |----------------------------------|-----------------------------------------|
 | One Collection per Agent         | Each agent is assigned **one permanent collection** which **cannot be deleted**. This ensures that all data remains persistently available. |
-| Max Documents per Agent          | Each collection can store up to **100,000 documents**. This cap helps maintain optimal performance. |
-| Schema-less Data Model           | Agents are free to store any shape of data. However, **data integrity and structure must be managed by the agent itself**. |
-| No Collection Deletion Allowed  | Agents are not allowed to delete their collection. Once created, the collection is **undeletable**. |
+| 100,000 Max Documents per Agent          | Each collection can store up to **100,000 documents**. This cap helps maintain optimal performance. |
+| Schema-less Data Model           | Agents are free to store any shape of data in a single collection. However, **data integrity and structure must be managed by the agent itself**. |
+| No Collection Deletion Allowed  | Agents are not allowed to delete their collection. Once created, the collection is **can not be deleted**. |
 
 
-## Best Practices
+## Key Guidelines
 
 - ✅ Design a consistent data schema at the agent level to avoid confusion or malformed data.
-- ✅ Implement data validation within your agent logic.
+- ✅ Implement data validation within your agent logic to ensure data consistency for similar documents.
 - ✅ Monitor document count regularly if nearing the 100,000-document limit.
-- ✅ Use a field like `collectionName` to logically group or categorize data, simulating multiple collections within a single collection (e.g. `"logs"`, `"settings"`, `"tasks"`).
+- ✅ Use a field like `collectionName`, `type`, or `tag` to logically group or categorize data to simulate multiple collections within a single collection (e.g. `"logs"`, `"settings"`, `"tasks"`).
 - ❌ Do not attempt to delete collections — it is not supported.
-
----
 
 
 ## Agent Database API
-This details the endpoints for interacting with the Agent Database provided by Telex. As mentioned earlier, each agent is provisioned with a dedicated MongoDB collection where they can store and manage up to 100,000 schema-less documents.
+This details the endpoints for interacting with the Telex Agent Database. As stated earlier, each agent is provisioned with a dedicated MongoDB collection where they can store and manage up to 100,000 schema-less documents.
 
 ## Base URL
 
@@ -54,15 +55,16 @@ X-TELEX-API-KEY: your-api-key-here
 
 This endpoint creates a new MongoDB collection for the agent.
 
-**Request Body**:
+**Sample Request Body**
 
 ```json
 {
   "collection": "test_collection"
 }
 ```
+**Sample Responses**
 
-**200 OK Response**
+***200 OK Response***
 
 ```json
 {
@@ -72,7 +74,7 @@ This endpoint creates a new MongoDB collection for the agent.
 }
 ```
 
-**400 Response**
+***400 Response***
 
 ```json
 {
@@ -84,17 +86,16 @@ This endpoint creates a new MongoDB collection for the agent.
 ```
 
 
-**Note**: Each agent can only create **one** collection. Subsequent attempts will return an error as shown above.
+**Note**: Again, each agent can only create **one** collection. Subsequent attempts will return an error as shown above.
 
----
 
 ### Add Document
 
-**POST** `/agent_db/collections/{collection_name}/documents`
+***POST*** `/agent_db/collections/{collection_name}/documents`
 
 This endpoint adds a new document to the specified MongoDB collection.
 
-**Request Body**:
+**Sample Request Body**
 
 ```json
 {
@@ -110,9 +111,11 @@ This endpoint adds a new document to the specified MongoDB collection.
     "updated_at": null
   }
 }
-
 ```
-**200 OK Response**
+
+**Sample Responses**
+
+***200 OK Response***
 
 ```json
 {
@@ -138,7 +141,6 @@ This endpoint adds a new document to the specified MongoDB collection.
 - Use null for uninitialized values where appropriate (e.g., "updated_at": null), but avoid empty strings.
 - Maintain consistent field naming across documents to prevent fragmentation.
 
----
 
 ### Retrieve All Documents
 
@@ -146,7 +148,7 @@ This endpoint adds a new document to the specified MongoDB collection.
 
 This endpoint retrieves all documents from a specified collection. Supports optional filtering.
 
-**Request Body**
+**Sample Request Body**
 
 To retrieve all documents without filtering.
 ```json
@@ -164,6 +166,8 @@ To filter results, include field-value pairs inside the filter object. Example:
   }
 }
 ```
+
+**Sample Responses**
 
 **200 OK Response**
 ```json
@@ -211,13 +215,13 @@ To filter results, include field-value pairs inside the filter object. Example:
 }
 ```
 
----
-
 ### Retrieve Document by ID
 
-**GET** `/agent_db/collections/{collection_name}/documents/{document_id}`
+***GET*** `/agent_db/collections/{collection_name}/documents/{document_id}`
 
 This endpoint retrieves a single document from a collection using its unique ID.
+
+**Sample Responses**
 
 **200 OK Response**
 ```json
@@ -261,15 +265,13 @@ This endpoint retrieves a single document from a collection using its unique ID.
 }
 ```
 
----
-
 ### Update Document
 
-**PUT** `/agent_db/collections/{collection_name}/documents/{document_id}`
+***PUT*** `/agent_db/collections/{collection_name}/documents/{document_id}`
 
 This endpoint updates a document by its ID. You can also introduce new fields when updating.
 
-**Request Body**:
+**Sample Request Body**
 
 ```json
 {
@@ -285,7 +287,9 @@ This endpoint updates a document by its ID. You can also introduce new fields wh
 }
 ```
 
-**200 OK Response** 
+**Sample Responses**
+
+***200 OK Response*** 
 
 ```json
 {
@@ -318,16 +322,18 @@ This endpoint updates a document by its ID. You can also introduce new fields wh
 ```
 
 **Note**
-- New fields provided will be added to the document, and existing fields with matching keys will be overwritten/updated.
+- New fields provided during update will be added to the document, and existing fields with matching keys will be overwritten/updated.
 - Ensure to enforce data structure and validation and avoid introducing new field where not meaningful or intended.
 
 ---
 
 ### Delete Document
 
-**DELETE** `/agent_db/collections/{collection_name}/documents/{document_id}`
+***DELETE*** `/agent_db/collections/{collection_name}/documents/{document_id}`
 
 This endpoint deletes a specific document by ID from the collection.
+
+**Sample Responses**
 
 **200 OK Response**
 
@@ -353,9 +359,9 @@ This endpoint deletes a specific document by ID from the collection.
 
 ## Use Cases
 
-1. **Agent State Management**: Store and retrieve the current context for AI agents.
+1. **Agent State Management**: Store and retrieve the context for AI agents.
 2. **Knowledge Base**: Maintain a repository of information that agents can query.
-3. **Task Tracking**: Log and monitor tasks assigned to agents.
+3. **Task Tracking**: Store and manage tasks assigned to agents.
 4. **Analytics**: Collect and analyze data to improve agent performance.
 
 
