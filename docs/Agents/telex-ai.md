@@ -23,7 +23,7 @@ Generate natural language text responses from user inputs.
 * Chatbots
 * Code generation
 * Summarization
-* Q\&A systems
+* Q&A systems
 
 ## Authentication
 
