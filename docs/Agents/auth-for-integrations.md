@@ -1,6 +1,6 @@
 ---
-sidebar_position: 5
-is_draft: true
+# sidebar_position: 5
+draft: true
 ---
 
 # Auth for Agents
