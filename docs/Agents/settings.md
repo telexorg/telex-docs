@@ -3,7 +3,7 @@
 draft: true
 ---
 
-# Agent Settings Specification
+# Agent Settings Spec
 
 ## Overview
 
