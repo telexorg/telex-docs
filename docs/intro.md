@@ -4,35 +4,74 @@ sidebar_position: 0
 
 # Welcome to Telex
 
-Welcome to the Telex API documentation! Telex is an all-in-one monitoring solution for DevOps and Software teams. You can utilize Telex to monitor databases, file systems, websites, and logs. Telex builds on a very simple idea — HTTP webhooks that can receive data from anywhere. Telex is optimized for bulk data ingestion owing to its robust infrastructure. This means Telex will not introduce any performance issues if it is integrated into your product.
+Telex is an AI and Human collaborative workspace for modern organizations. Whether you're running a tech startup, a logistics firm, a healthcare provider, or a government agency — Telex helps you streamline operations, automate tasks, and coordinate teams through intelligent agents called **AI coworkers**. At its core, Telex is meant for collaboration though **channels** and **direct messages**. To extend these and provide organizations with easier ways of executing day to day taasks, Telex provides organizations with AI Agents to perform and automate these daily tasks on their behalf.
 
-## The Core of Telex
+Telex is not just about automation — it’s about **delegation**. It provides collaboration not just between humans but with AI Agents. You define what needs to happen, and your AI coworker takes care of it.
 
-The fundamental unit of the Telex platform is a channel. Every message that goes in or out of Telex must pass through a channel. Users in a Telex organisation can be added or removed from channels, making them useful for separating concerns. A channel can serve as a routing mechanism to direct messages like application errors to your team's communication platform like Slack or Microsoft Teams. You could also just use a channel directly for regular team chat and not have to pay for other tools. There are several other details about channels that if discussed would fill out this introduction, so it's best to continue reading about it on the [dedicated channel docs page](/docs/Channels/intro.md).
+
+## Agents - The Core of Telex
+
+Telex is a workspace for both humans and intelligent agents — AI coworkers that work alongside your team to perform and automate tasks, manage data, and support operations across your organization. They are called co-workers because you can just interact with them the same way you do a human colleague.
+Each AI coworker is designed with a clear purpose and a structured task list and skill. You define what they do, how they behave, and what tools they use. Whether you're running a media company, a logistics firm, or a government agency, Telex lets you delegate work to agents that never sleep, forget, or burn out. These agents performs tasks on your behalf. You give it a role, a personality, and a task list and equip it with the necessary skills — and it gets to work.
+
+Each AI coworker is:
+- Role-driven: You define its job (e.g., blogger, analyst, recruiter)
+- Task-configured: You specify what it should do
+- Skill-enabled: You equip it with tools to complete tasks
+- Autonomous: It responds to data, prompts, and events in real time
+
+## Human and Agent Collaboration
+
+Collaboration in Telex happens through two main ways -- channels and Direct messages. Inside each channel, you can deploy one or more agents designed to handle specific responsibilities or you can choose to interact with the agents through direct messages.
+
+**Agents are:**
+
+* **Configurable**: You define their role, tone, and task list
+* **Skillful**: They use integrations (called skills) to perform actions
+
+
+### Tasks - Your Agent Behavior
+
+Tasks are the building blocks of agent behavior. You configure what your agent should do, when, and how — using a clear, structured task list. They are the core of your agent’s behavior. You don’t need to write code or design workflows — just list what your agent should do, and Telex handles the orchestration behind the scenes. You add an agent and define its tasks and it runs a workflow to perform your task using this task list you specified.
+
+Each task is run using a workflow, but you don’t need to manage that directly. You focus on the **task configuration** — Telex handles the orchestration.
+
+
+### Skills - Your Agent Capabilities
+
+Skills are modular tools that agents use to complete tasks. You can assign multiple skills to an agent. These skills are custom integrations built for specific purposes depending on their use cases. While tasks define what your agent should do, skills equip your AI Coworker with the capabilities it needs to perform its task.
+
+They can include:
+- API integrations
+- Internal utilities
+- LLM-powered sub-agents
+
+You assign skills based on the tasks your agent needs to perform. For example, a blogger agent might use:
+- A topic discovery skill
+- An image generation skill
+- An seo-analyzer skill
+
 
 ## Getting Started
 
-To get started with Telex, create an account at https://telex.im/auth/sign-up. You will be prompted to create an organization upon signup. Once that is done, you should proceed to create your first channel and send your first webhook message.
+Here’s how to launch your first intelligent channel:
 
-### Messages on Telex channels
-
-Telex by default can serve as a chat application for teams. Once a message enters a channel, all team members present in that channel receive the message in real time. This also means that when a third-party like a bash script calling the channel's webhook or a custom agent sends a message to the channel, all subscribed members and tools receive the message in real time.
+1. Sign up at **[telex.im](https://telex.im/auth/sign-up)**
+2. Create your **organization**
+3. Set up a **channel** for your team or project
+4. Add an **agent** with a defined role and personality
+5. Configure **tasks** and assign relevant **skills**
+6. Start sending data or chatting with your agent
 
 The gif below showcases the process of registering a new account on Telex and sending your first message.
 
 ![Signup and first message](/gif/signup-and-first-message.gif)
 
-### Webhooks on Telex
 
+### Interacting with Agents
 
-Telex is designed for webhook events and retransmission. It allows you log events as they occur without strict rate limiting. Say you desire to see new signups on Slack and email simultaneously, you could achieve this by activating the existing Slack and Email agents on a channel. Doing this saves you the stress of creating a new Slack app or dealing with SMTP and the likes. An agent handles it all for you through Telex! The only requirement is you calling the Webhook URL of the channel where you activated the agents.  
+Once you have created an organization on Telex, you can create and configure your agents with a task list and necessary skills. You can then interact with them and watch as they perform and automate tasks at your behest.
 
-Telex's design allows you to collect any type of event from your application and send them to downstream systems like Slack, Discord, Teams, etc.
+<!-- The gif below shows the process of creating and configuring first agent and making your first request.
 
-
-The gif below shows the process of creating your first channel and making your first request.
-
-![Create channel and send first webhooks](/gif/create-first-channel-and-send-first-webhook.gif)
-
-
-There are tons of creative ways to use Telex, and its beauty ultimately lies in the freedom of building custom agents. You can build a simple app that connects to the Telex system and modify data coming into channels. You can also build an app that can transmit data to Telex at set intervals. Telex maintains the timing and your app simply responds when Telex calls it. Get started by building your first agent.
+![Create channel and send first webhooks](/gif/create-first-channel-and-send-first-webhook.gif) -->
