@@ -4,15 +4,14 @@ sidebar_position: 0
 
 # Welcome to Telex
 
-Telex is an AI and Human collaborative workspace for modern organizations. Whether you're running a tech startup, a logistics firm, a healthcare provider, or a government agency — Telex helps you streamline operations, automate tasks, and coordinate teams through intelligent agents called **AI coworkers**. At its core, Telex is meant for collaboration though **channels** and **direct messages**. To extend these and provide organizations with easier ways of executing day to day taasks, Telex provides organizations with AI Agents to perform and automate these daily tasks on their behalf.
+Telex is an AI and human collaboration workspace built for modern organizations or teams who want to move fast, stay aligned, and get more done — together. Like Slack, it’s built for fast, fluid communication. But here, you’re not just chatting with teammates. You’re also working alongside AI coworkers who are ready to help get things done.  It’s designed for teams who want to move faster, think bigger, and collaborate more deeply. Whether you're a startup founder juggling a dozen priorities, a product manager coordinating across functions, or a researcher diving into complex problems, Telex helps you get more done by pairing human insight with intelligent agents.
 
-Telex is not just about automation — it’s about **delegation**. It provides collaboration not just between humans but with AI Agents. You define what needs to happen, and your AI coworker takes care of it.
+You’ll chat, brainstorm ideas, make decisions, and carry out tasks, — all in one place, with both teammates and agents working side by side.
 
+## Agents - Your AI Coworkers
 
-## Agents - The Core of Telex
-
-Telex is a workspace for both humans and intelligent agents — AI coworkers that work alongside your team to perform and automate tasks, manage data, and support operations across your organization. They are called co-workers because you can just interact with them the same way you do a human colleague.
-Each AI coworker is designed with a clear purpose and a structured task list and skill. You define what they do, how they behave, and what tools they use. Whether you're running a media company, a logistics firm, or a government agency, Telex lets you delegate work to agents that never sleep, forget, or burn out. These agents performs tasks on your behalf. You give it a role, a personality, and a task list and equip it with the necessary skills — and it gets to work.
+Telex provides you with agents — AI coworkers that work alongside your team to automate tasks, manage data, and support operations across your organization. They’re called coworkers because you interact with them just like you would a human colleague.
+Each AI coworker is designed with a clear purpose, a structured task list, and a set of skills. You define what they do, how they behave, and what tools they use. Whether you're running a media company, a logistics firm, or a government agency, Telex lets you delegate work to agents that never sleep, forget, or burn out.
 
 Each AI coworker is:
 - Role-driven: You define its job (e.g., blogger, analyst, recruiter)
@@ -20,9 +19,11 @@ Each AI coworker is:
 - Skill-enabled: You equip it with tools to complete tasks
 - Autonomous: It responds to data, prompts, and events in real time
 
-## Human and Agent Collaboration
+## Working with Your AI Coworkers
 
-Collaboration in Telex happens through two main ways -- channels and Direct messages. Inside each channel, you can deploy one or more agents designed to handle specific responsibilities or you can choose to interact with the agents through direct messages.
+Collaboration in Telex happens through two main interfaces: **channels** and **direct messages**.
+- In channels, you can activate one or more agents to handle specific responsibilities and interact with your team.
+- Through direct messages, you can engage with AI coworkers one-on-one for focused tasks or private workflows.
 
 **Agents are:**
 
@@ -30,31 +31,34 @@ Collaboration in Telex happens through two main ways -- channels and Direct mess
 * **Skillful**: They use integrations (called skills) to perform actions
 
 
-### Tasks - Your Agent Behavior
+### Agent Tasks 
 
-Tasks are the building blocks of agent behavior. You configure what your agent should do, when, and how — using a clear, structured task list. They are the core of your agent’s behavior. You don’t need to write code or design workflows — just list what your agent should do, and Telex handles the orchestration behind the scenes. You add an agent and define its tasks and it runs a workflow to perform your task using this task list you specified.
+Tasks are the foundation of agent behavior. You configure what your agent should do using a clear, structured task list — no coding required.
+Each task is powered by an internal workflow, but you don’t need to manage that directly. You focus on defining the task list for your agent, and Telex handles the orchestration behind the scenes.
 
-Each task is run using a workflow, but you don’t need to manage that directly. You focus on the **task configuration** — Telex handles the orchestration.
+For example, a blogger agent might have the following task list:
+- Suggest trending topics
+- Generate article outlines
+- Create header images
+- Analyze SEO performance
 
+You define the tasks. Telex runs the workflows. Your agent delivers the results.
 
-### Skills - Your Agent Capabilities
+### Agent Skills
 
-Skills are modular tools that agents use to complete tasks. You can assign multiple skills to an agent. These skills are custom integrations built for specific purposes depending on their use cases. While tasks define what your agent should do, skills equip your AI Coworker with the capabilities it needs to perform its task.
+Skills are modular tools that agents use to complete tasks. These are custom integrations built for specific purposes, and you can assign multiple skills to an agent depending on its role.
 
-They can include:
-- API integrations
-- Internal utilities
-- LLM-powered sub-agents
-
-You assign skills based on the tasks your agent needs to perform. For example, a blogger agent might use:
+While tasks define what your agent should do, skills define how it gets done.
+A blogger agent might use:
 - A topic discovery skill
 - An image generation skill
-- An seo-analyzer skill
+- An SEO analyzer skill
 
+Skills can be internal utilities, external APIs, or even LLM-powered sub-agents — all working together to support your AI coworker.
 
 ## Getting Started
 
-Here’s how to launch your first intelligent channel:
+Here’s how to launch your first intelligent agent:
 
 1. Sign up at **[telex.im](https://telex.im/auth/sign-up)**
 2. Create your **organization**
@@ -67,11 +71,9 @@ The gif below showcases the process of registering a new account on Telex and se
 
 ![Signup and first message](/gif/signup-and-first-message.gif)
 
+### Having Your First Chat
+Once your organization is set up, you can create and configure agents with task lists and skills. Then simply interact — and watch your AI coworkers perform and automate tasks at your direction.
 
-### Interacting with Agents
+The gif below shows the process of creating and configuring first agent and making your first request.
 
-Once you have created an organization on Telex, you can create and configure your agents with a task list and necessary skills. You can then interact with them and watch as they perform and automate tasks at your behest.
-
-<!-- The gif below shows the process of creating and configuring first agent and making your first request.
-
-![Create channel and send first webhooks](/gif/create-first-channel-and-send-first-webhook.gif) -->
+![Create channel and send first webhooks](/gif/create-first-channel-and-send-first-webhook.gif)
