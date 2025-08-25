@@ -7,101 +7,48 @@ toc_max_heading_level: 4
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Building Agents
+# Creating Agents
 
-### The Agent Card
+Agents are created through a simple form where you define their identity, role, and behavior. Once launched — with task lists and skills properly configured — you can interact with them to perform tasks based on your defined **task list** using assigned **skills**.
 
-The foundation of any Telex agent is its Agent Card, a JSON specification that defines its core properties and capabilities. This agent card, represented as a JSON object, contains vital information on the name, skills, and capabilities of your agent.  
+## How to Create an Agent
 
-When adding your agent to Telex, this JSON object is supplied via a publicly accessible URL generally known as the well-known URL. According to the A2A protocol, the recommended location for an agent's Agent Card is `{your_agent_base_url}/.well-known/agent.json`, where `{your_agent_base_url}` is the main web address where your agent is hosted. This well-known URL is where Telex (or any other A2A client) discovers your agent's capabilities and its Agent Card.  
+To create AI agents, log into your organization and locate the **AI Coworker** section in the sidebar. Click the **Add New** button and fill out the form:
 
-Within this Agent Card, the `url` property specifies the base URL for your agent's A2A service endpoints. This is the address where other agents or services will send actual A2A JSON-RPC requests. The structure of the Agent Card is shown below: 
+![creating a new agent](/img/create-coworker.png)
 
-```
-{
-  name: string;
-  description: string;
-  url: string;
-  provider: {
-    organization: string;
-    url: string;
-  };
-  version: string;
-  documentationUrl?: string;
-  capabilities: {
-    streaming: boolean;
-    pushNotifications: boolean;
-    stateTransitionHistory: boolean;
-  };
-  securitySchemes?: { 
-    [scheme: string]: SecurityScheme 
-  };
-  security?:[{ 
-    [scheme: string]: string[] 
-    }
-  ];
-  defaultInputModes: string[];
-  defaultOutputModes: string[];
-  skills: [
-    {
-      id: string;
-      name: string;
-      description: string;
-      inputModes: string[];
-      outputModes: string[];
-      examples: [];
-    }
-  ];
-  supportsAuthenticatedExtendedCard?: boolean;
-}
-```
-:::note
-Fields suffixed with ? are optional
-:::
+## Steps:
 
-<!-- ### Field Definitions -->
+### 1. Define the Agent’s Identity
+- **Colleague Name**: A friendly name users will recognize
+- **Colleague Title**: A short label describing its role (e.g. “Sales Monitor”)
+
+### 2. Write the Job Description
+This is the **system prompt** — the agent’s core instruction set.
+
+Example:  
+> “You are a resourceful and attentive assistant who helps me stay informed and organized. You proactively surface relevant updates, summarize key information, and communicate clearly and concisely. Always prioritize clarity, usefulness, and speed. If you're unsure about something, ask rather than assume.”
+
+Telex will automatically parse this into a structured system prompt that guides your agent’s behavior.
+
+### 3. Choose a Tone
+Select how the agent communicates:
+- Friendly  
+- Formal  
+- Casual  
+
+### 4. Customize the Face (Optional)
+Choose a visual avatar that matches your agent’s personality.
+
+### 5. Set Visibility
+Control who can use or view the agent:
+- **Public**: Available to everyone in the workspace  
+- **Private**: Restricted to specific users or Admins  
+
+### 6. Click “Create Colleague”
+Once submitted, Telex AI activates the agent and begins operating based on the job description.
 
 
-#### Sample Structure of an Agent card
-
-```json
-{
-  "name": "PingPongAgent",
-  "description": "An agent that responds 'pong' to 'ping'.",
-  "url": "https://your-agent-domain.com/api",
-  "version": "1.0.0",
-  "provider": {
-    "organization": "Example Org.",
-    "url": "https://www.example-organization.com"
-  },
-  "documentationUrl": "https://your-agent-domain.com/docs",
-  "capabilities": {
-    "streaming": false,
-    "pushNotifications": false,
-    "stateTransitionHistory": false
-  },
-  "defaultInputModes": ["text/plain"],
-  "defaultOutputModes": ["application/json", "text/plain"],
-  "skills": [
-    {
-      "id": "erig4w9292tb",
-      "name": "Ping Response",
-      "description": "Responds with 'pong' when given 'ping'.",
-      "inputModes": ["text/plain"],
-      "outputModes": ["text/plain"],
-      "examples": [
-        {
-          "input": { "parts": [{ "text": "ping", "contentType": "text/plain" }] },
-          "output": { "parts": [{ "text": "pong", "contentType": "text/plain" }] }
-        }
-      ]
-    }
-  ],
-  "supportsAuthenticatedExtendedCard": false
-}
-```  
-<!-- You can find more details about the agent card [here](https://google-a2a.github.io/A2A/specification/#5-agent-discovery-the-agent-card) -->
-
-
-
-<!-- The A2A specification protocol defines --- main methods -->
+### Next Steps
+- Configure the **Task List**: Define what the agent should do  
+- Assign **Skills**: Choose capabilities the agent will use to complete tasks
