@@ -4,17 +4,23 @@ sidebar_position: 5
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Request/Response Structure
+# A2A Communication
+This section documents the communication endpoints, and request and response structure for the A2A Protocol.
+The A2A protocol uses JSON-RPC 2.0 as the payload format for its requests and responses. JSON-RPC is a remote procedure call protocol encoded in JSON. It allows for calling methods on a remote server and getting responses. It's commonly used for web services and APIs to facilitate communication between a client and a server. 
 
-### **3. Request/Response Structure**
-The A2A protocol uses JSON-RPC 2.0 as the payload format for its requests and responses. JSON-RPC is a remote procedure call protocol encoded in JSON. It allows for calling methods on a remote server and getting responses. It's commonly used for web services and APIs to facilitate communication between a client and a server. Your agent should expose two main endpoints:
+## A2A Communication Endpoints
+For coummunication to occur between the client - Telex and your agent, your server should expose two main endpoints:
 
-1. **_GET_** `/.well-known/agent.json` The well-known endpoint which returns the information about the agent on the agent card
+#### **_GET_** `/.well-known/agent.json` 
 
-2. **_POST_** `/`  
-  JSON-RPC simplifies API design by using a single endpoint for all method calls. The client requests all A2A RPC methods by sending an HTTP POST request to the A2A Server's base url (as specified in its AgentCard). The body of the HTTP POST request MUST be a JSON-RPC request object, and the Content-Type header MUST be application/json.  Your agent's `POST /` endpoint will use the `method` field in the request to route to the appropriate function.
+The well-known endpoint which returns the information about the agent on the agent card. Make sure that your server when called returns a valid agent card in order for Telex to retrieve all necessary information needed to communicate with your agent
 
-  **Sample JSON-RPC Request Object**
+#### **_POST_** `/`  
+  The is the endpoint where any communication from telex will be forwarded to. The body of the HTTP POST request is a JSON-RPC request object, and the Content-Type header MUST be application/json. JSON-RPC simplifies API design by using a single endpoint for all method calls. The client requests all A2A RPC methods by sending an HTTP POST request to the A2A Server's base url (as specified in its AgentCard). Your agent's `POST /` endpoint will use the `method` field in the request to route to the appropriate function.
+
+## Request/Response Structure
+
+###  **Sample JSON-RPC Request Object**
 
   ```json
   {
@@ -35,7 +41,7 @@ The A2A protocol uses JSON-RPC 2.0 as the payload format for its requests and re
   }
   ```
 
-  **Sample JSON-RPC Success Response**
+###  **Sample JSON-RPC Success Response**
   ```json
     {
       "jsonrpc": "2.0", 
@@ -54,7 +60,7 @@ The A2A protocol uses JSON-RPC 2.0 as the payload format for its requests and re
     }
   ```
 
-  **Sample JSON-RPC Error Response**
+###  **Sample JSON-RPC Error Response**
 
   ```json
   {
@@ -68,7 +74,7 @@ The A2A protocol uses JSON-RPC 2.0 as the payload format for its requests and re
   ```
 
 
-**Code Example**:
+### **Code Example**:
 
 <Tabs>
 
