@@ -7,9 +7,9 @@ toc_max_heading_level: 4
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Agent Skills
+# Creating Integrations
 
-Agent Skills are the building blocks of intelligence within Telex AI agents. Each skill represents a specific capability—whether it's answering questions, handling tasks, or integrating with external systems. By combining multiple skills, agents can perform complex operations with precision and context-awareness.
+Integrations are the building blocks of intelligence within Telex AI agents. Each integrations represents a specific skill—whether it's sending emails, generating an image, or integrating with external systems. By combining multiple integrations or skills, agents can perform complex operations with precision and context-awareness.
 
 
 ### The Agent Card
