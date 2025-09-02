@@ -4,23 +4,15 @@ sidebar_position: 1
 
 # Introduction
 
-Telex Notifications enable real-time alerts for developers building **Telex clients** — applications that connect directly to Telex’s backend to receive updates, display notifications, and respond to system events. This guide explains how the notification system works, how to connect to it, and how to handle incoming events programmatically.
+Telex Notifications enable real-time alerts for developers building **Telex clients** — applications that connect directly to Telex’s backend to receive updates, act or respond to system events. This guide explains how the notification system works, how to connect to it, and how to handle incoming events programmatically.
 
 > ⚠️ This guide is intended for developers and technical integrators. It is **not** for general Telex users or agent creators using the UI.
 
 
 ## Conceptual Overview
-
-A **Telex client** is any software that connects to Telex’s backend to:
-
-- Authenticate users
-- Fetch organizational and channel data
-- Subscribe to notification channels
-- Display or act on backend events
-
 The notification system is powered by **Centrifugo** and **WebSocket connections**. Once authenticated, the client subscribes to specific channels and receives push messages in real time.
 
-### 🔄 High-Level Flow
+### High-Level Flow
 
 1. App starts and logs in using credentials from `env.json`
 2. Retrieves organizations associated with the user

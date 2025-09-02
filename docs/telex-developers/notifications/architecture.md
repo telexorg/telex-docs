@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+title: How it Works
 ---
 
 # Architectural Overview

@@ -2,6 +2,7 @@
 sidebar_position: 2
 toc_min_heading_level: 2
 toc_max_heading_level: 4
+title: Create Your First Agent
 ---
 
 import Tabs from '@theme/Tabs';
@@ -13,7 +14,7 @@ Agents are created through a simple form where you define their identity, role, 
 
 ## How to Create an Agent
 
-To create AI agents, log into your organization and locate the **AI Coworker** section in the sidebar. Click the **Add New** button and fill out the form:
+To create an AI agent, log into your organization and locate the **AI Coworker** section in the sidebar. Click the **Add New** button and fill out the form:
 
 ![creating a new agent](/img/create-coworker.png)
 

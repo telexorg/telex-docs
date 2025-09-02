@@ -6,14 +6,12 @@ sidebar_position: 4
 
 Once Telex Start has successfully logged in using credentials from `env.json`, it begins the process of subscribing to real-time notifications. This involves three tightly connected steps:
 
-## Steps:
-Below are the steps followed to subscribe to real-time notifications.
-
-### Step 1: Fetching Organizations
+### Step 1: Retrieving Organizations
 
 After login, the app sends a request to retrieve the organizations the user belongs to.
 
 **Endpoint:**  
+
 `GET /api/v1/users/organisations`
 
 **Headers:**  
@@ -32,8 +30,11 @@ Authorization: Bearer <access_token>
 
 ```
 
-> Each organization ID is used to construct a channel name in the format:
-`<org_id>/<user_id>`
+Each organization ID is used to construct a channel name in the format:
+
+```json
+ `<org_id>/<user_id>`
+```
 
 
 These channels are used to subscribe to notifications.

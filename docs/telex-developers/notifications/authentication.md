@@ -1,5 +1,6 @@
 ---
 sidebar_position: 4
+title: Authentication Process
 ---
 
 # Authentication & Token Management
@@ -7,7 +8,7 @@ sidebar_position: 4
 This section explains how Telex Start authenticates users and manages tokens required to connect to Telex’s backend services and receive notifications.
 
 
-### 🔐 Automated Login via `.env`
+### Automated Login via `.env`
 
 Telex Start does **not** prompt the user to log in via a GUI. Instead, the user’s **email and password** are defined in a configuration file before the app is launched.
 
@@ -30,7 +31,7 @@ When the app starts:
 > These tokens are stored in memory and used throughout the session.
 
 
-### 🧠 Token Usage Breakdown
+### Token Usage Breakdown
 
 | Token Type         | Purpose                                      | Used In                         |
 |--------------------|----------------------------------------------|----------------------------------|
@@ -48,7 +49,7 @@ When the app starts:
 - Connect to WebSocket → Uses connection token
 
 
-### 🔧 Implementation Notes
+### Implementation Notes
 
 - The login logic is handled in the `Telex` class.
 - Tokens are passed as headers in HTTP requests using `cpp-httplib`.
@@ -60,9 +61,3 @@ When the app starts:
 - Tokens are stored in memory and cleared when the app exits
 - Credentials in env.json should be protected and never committed to version control
 - Developers should avoid logging tokens or exposing them in UI components
-
-
-### ✅ Summary
-
-Telex Start performs automatic login using credentials defined in env.json. Once authenticated, it uses a series of tokens to securely connect to Telex’s backend, subscribe to channels, and receive push notifications
-
