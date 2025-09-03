@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 title: Installation and  Setup
 ---
 
@@ -28,14 +28,15 @@ Make sure the following are installed:
 ```bash
 cmake --version
 ```
----
+
 ### Step 2: Cloning the Repository
+Run this to clone the repository for the telex notification app:
 
 ```bash
 git clone https://github.com/your-org/telex-start.git
 cd telex-start
 ```
----
+
 
 ### Step 3: Setting Up vcpkg
 If you don’t already have vcpkg installed, run this at the root of the telex-start repo
@@ -59,7 +60,6 @@ Dependencies include:
 
 These are defined in the project’s vcpkg.json which should be present in the root of the Telex Start repo.
 
----
 
 ### Step 4: Build the App with CMake
 Open Developer PowerShell for Visual Studio, then From the root of the Telex Start repo, run:
@@ -74,78 +74,24 @@ cmake --build build/windows/debug
 ```
 This will generate telexstart_d.exe in the build folder.
 
-> 📁 **Required file:** `CMakeLists.txt `
+> **Required file:** `CMakeLists.txt`.
 >
 > This file defines the build process and links platform-specific libraries. Ensure it is located in the root of the project.
----
 
-### Step 5: Configuration
 
-Check for this file in the project root:
-- env.json.sample → Rename to env.json
-
-This file will contain:
-```json
-{
-  "email": "youremail@example.com",
-  "password": "password"
-}
-```
-
-> Replace with your actual telex login credentials.
----
-
-### Step 6: ▶️ Running the App
+### Step 5: ▶️ Running the App
 Navigate to the build folder and run:
 
 ```bash
 build/windows/debug/telexstart.exe
 ```
+> The app will launch as a GUI application with a system tray icon.
 
-- The app will launch as a GUI application with a system tray icon.
----
-
-## Ubuntu Setup (Optional)
-Only follow this if you're building on Linux. Windows is the preferred platform.
-
-### Step 1: Install Tools
-```bash
-sudo apt update
-sudo apt install -y build-essential gcc g++ cmake ninja-build pkg-config git
-```
----
-
-### Step 2: Clone and Bootstrap vcpkg
-```bash
-git clone https://github.com/microsoft/vcpkg.git
-cd vcpkg
-git checkout <latest-release-tag>
-./bootstrap-vcpkg.sh
-```
-
-Update the builtin-baseline in vcpkg.json using:
-
-```bash
-git rev-parse HEAD
-```
----
-
-### Step 3: Build with CMake
-```bash
-cmake -S . -B build/linux/debug \
-  -D CMAKE_BUILD_TYPE=Debug \
-  -D CMAKE_TOOLCHAIN_FILE=./vcpkg/scripts/buildsystems/vcpkg.cmake \
-  -D VCPKG_TARGET_TRIPLET=x64-linux
-
-cmake --build build/linux/debug
-```
----
-
-Once setup is complete, you’ll be able to:
+### Notes
+Once the app is running, you’ll be able to:
+- See the Telex notication icon in the system tray
 - Log in with your Telex credentials
-- Fetch organizations and channels
-- Subscribe to notification streams
-- Receive and display real-time alerts
+- Start receiving notification events.
 
 
 

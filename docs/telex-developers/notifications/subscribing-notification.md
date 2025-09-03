@@ -2,19 +2,18 @@
 sidebar_position: 4
 ---
 
-# Subscribing to Notifications
+# Subscription Flow
 
-Once Telex Start has successfully logged in using credentials from `env.json`, it begins the process of subscribing to real-time notifications. This involves three tightly connected steps:
+Once Telex Start successfully logs in using the user's credentials, it automatically initiates the subscription process for real-time notifications. This flow is fully managed by the starter app and involves three tightly connected steps:
 
-### Step 1: Retrieving Organizations
+### Step 1: Retrieving User Organizations
 
 After login, the app sends a request to retrieve the organizations the user belongs to.
 
 **Endpoint:**  
-
 `GET /api/v1/users/organisations`
 
-**Headers:**  
+**Headers:**
 ```http
 Authorization: Bearer <access_token>
 ```
@@ -33,7 +32,7 @@ Authorization: Bearer <access_token>
 Each organization ID is used to construct a channel name in the format:
 
 ```json
- `<org_id>/<user_id>`
+channel: <org_id>/<user_id>
 ```
 
 
@@ -48,7 +47,7 @@ For each channel, the app requests a subscription token using the notification t
 
 **Headers**:
 ```http
-`X-Notification-Token: <notification_token>`
+X-Notification-Token: <notification_token>
 ```
 **Body:**
 
@@ -94,7 +93,7 @@ Once all subscription tokens are collected, the app connects to Centrifugo via W
 }
 ```
 
-> The app sends this payload immediately after the WebSocket Open event.
+The app sends this payload immediately after the WebSocket Open event.
 
 ### Receiving Notifications
 Once connected, the app listens for push messages. If a message contains:
@@ -116,14 +115,7 @@ event->SetClientData(new wxStringClientData(notification_data["description"]));
 wxQueueEvent(m_pParent, event);
 ```
 
-### Summary
-The subscription flow works as follows:
-- Fetch organizations using the access token
-- Build channel names and request subscription tokens
-- Connect to Centrifugo WebSocket using the connection token
-- Subscribe to channels and listen for push notifications
-
-This enables Telex Start to deliver real-time alerts based on backend events.
+This opens up the notification dialog box and displays the notification
 
 
 
