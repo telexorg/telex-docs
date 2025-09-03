@@ -12,15 +12,6 @@ Telex Notifications enable real-time alerts for developers building **Telex clie
 ## Conceptual Overview
 The notification system is powered by **Centrifugo** and **WebSocket connections**. Once authenticated, the client subscribes to specific channels and receives push messages in real time.
 
-### High-Level Flow
-
-1. App starts and logs in using credentials from `env.json`
-2. Retrieves organizations associated with the user
-3. Requests subscription tokens for each channel
-4. Establishes a WebSocket connection to Centrifugo
-5. Receives and handles notifications in JSON format
-
-
 ### Purpose of Notifications
 
 Notifications are designed to:
@@ -31,10 +22,10 @@ Notifications are designed to:
 
 This ensures users stay up to date without needing to keep the full Telex app open. Notifications are timely, relevant, and unobtrusive — enhancing productivity without interruption.
 
-### How It Works for Users (Non-Technical Perspective)
+### High-Level Flow
 
-From the user's point of view, the notiication app operates quietly in the background:
-
-- They launch the Telex Start desktop app  
-- The app connects to Telex and begins listening for backend updates  
-- When something changes — like a new thread or reply — Telex Start displays a native desktop notification  
+1. App starts and user logs in using their telex username and password
+2. App retrieves organizations associated with the user
+3. Requests subscription tokens for each channel
+4. Establishes a WebSocket connection to Centrifugo
+5. Receives and handles notifications in JSON format

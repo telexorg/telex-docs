@@ -1,63 +1,54 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 title: Authentication Process
 ---
 
-# Authentication & Token Management
+# Authentication Process
 
-This section explains how Telex Start authenticates users and manages tokens required to connect to Telex’s backend services and receive notifications.
+Telex Start uses a native login dialog to authenticate users before enabling notifications and backend connectivity.
 
+## Login Flow
 
-### Automated Login via `.env`
+- When Telex Start launches, it places an icon in the system tray.
+- Users can right-click the tray icon and select **“Login”** to open the login dialog.
+- The dialog appears at the bottom right corner of the screen and prompts users to input:
 
-Telex Start does **not** prompt the user to log in via a GUI. Instead, the user’s **email and password** are defined in a configuration file before the app is launched.
+  - **Email address**
+  - **Password**
 
-#### File: `env.json`
+- Once logged in, native desktop notifications are enabled.
 
-```json
-{
-  "email": "user@example.com",
-  "password": "securepassword123"
-}
-```
+### Behavior on Success
 
-When the app starts:
-- It reads the credentials from env.json
-- Sends a login request to the Telex API
-- Receives:
-  - An access token (for authenticated API requests)
-  - A notification token (for push subscriptions)
+- A success message dialog box is shown.
+- The App retrieves access and notification tokens.
+- Connects to Centrifugo and subscribes to notification channels.
+- Begins listening for backend updates via WebSocket.
+- Notifications begin appearing in real time.
 
-> These tokens are stored in memory and used throughout the session.
+### Behavior on Failure
 
+- An error message is shown.
+- The login dialog is re-triggered for retry.
+- The app does not proceed until valid credentials are provided.
 
-### Token Usage Breakdown
+## UI Components
 
-| Token Type         | Purpose                                      | Used In                         |
-|--------------------|----------------------------------------------|----------------------------------|
-| Access Token       | Authenticates API requests                   | `fetchUserOrganisations()`      |
-| Notification Token | Authenticates push subscription requests     | `getSubscriptionToken(channel)` |
-| Connection Token   | Enables WebSocket connection via Centrifugo  | `connectAndSubscribeViaWebSocket()` |
+- **LoginDialog**  
+  A modal dialog built with wxWidgets.
+  - Includes username and password fields.
+  - “Login” and “Cancel” buttons.
+  - Validates input before triggering authentication.
 
+- **NotificationWindow**  
+  Listens for login events and displays the dialog.
+  - Handles login success/failure feedback.
+  - Manages token lifecycle and connection state.
 
-### 🔄 Token Flow Summary
+---
 
-- App starts → Reads credentials from env.json
-- Login request → Receives access + notification tokens
-- Fetch organizations → Uses access token
-- Request subscription tokens → Uses notification token
-- Connect to WebSocket → Uses connection token
+### Next Steps
 
-
-### Implementation Notes
-
-- The login logic is handled in the `Telex` class.
-- Tokens are passed as headers in HTTP requests using `cpp-httplib`.
-- The connection token is requested via a special API call and used to authenticate with Centrifugo.
-
-
-### 🛡️ Security Considerations
-
-- Tokens are stored in memory and cleared when the app exits
-- Credentials in env.json should be protected and never committed to version control
-- Developers should avoid logging tokens or exposing them in UI components
+- [Installation and Setup](./installation-and-setup)
+- [Automatic Subscription Flow](./automatic-subscription-flow)
+- [How It Works](./how-it-works.md)
