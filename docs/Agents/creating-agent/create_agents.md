@@ -47,9 +47,9 @@ Control who can use or view the agent:
 - **Private**: Restricted to specific users or Admins  
 
 ### 6. Click “Create Colleague”
-Once submitted, Telex AI activates the agent and begins operating based on the job description.
+Once submitted, Telex AI activates the agent which will be operating based on the job description you defined
 
 
 ### Next Steps
-- Configure the **Task List**: Define what the agent should do  
-- Assign **Skills**: Choose capabilities the agent will use to complete tasks
+- **Task List**: Define what the agent should do  
+- **Skills**: Choose capabilities the agent will use to execute tasks

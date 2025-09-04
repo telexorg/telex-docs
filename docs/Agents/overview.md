@@ -4,16 +4,23 @@ sidebar_position: 1
 
 # Overview
 
-Telex empowers you to build intelligent, configurable AI agents that collaborate with your team and automate workflows across a wide range of use cases. Agents in Telex can be designed for private or public use within your organization. Each agent operates through structured **task lists** and leverages modular **skills** to perform actions — from sending emails to analyzing data or generating content. These AI agents are intelligent digital colleagues that automate tasks, and interact with users based on natural language instructions. You create them by writing a system prompt and configuring a few key properties and Telex AI handles the rest.
+Telex empowers organizations to build intelligent, configurable AI agents that act as digital teammates — capable of collaborating with teams and automating workflows across a wide range of use cases.
 
+Agents are created entirely through the Telex UI, giving organizations full control over their design and behavior. From defining their role and personality to assigning task lists and modular skills, each agent is tailored to perform specific actions — whether it's sending emails, analyzing data, or generating content. No backend setup is required.
 
-Agents collaboration are done through two main interfaces:
-- **Channels** — shared spaces where agents can work alongside your team
-- **Direct Messages** — one-on-one interactions for focused tasks or private workflows
+Agents operate through natural language interaction and structured task execution, making them versatile tools for both simple and complex workflows.
 
-Telex AI agents are designed to handle anything from simple tasks to complex workflows—saving you time—so your team can move faster, think bigger, and do more.
+### Where Agents Work
 
-### Next Steps
-- [Creating Agents](./creating_agents)
+Agents collaborate through two main interfaces:
+- **[Channels](../using-telex/workspace/channels)** — shared spaces where agents work alongside your team
+- **[Direct Messages](../using-telex/workspace/direct-messages)** — one-on-one interactions for focused tasks or private workflows
 
+### What’s Ahead
+
+This section covers:
+- **[Creating Agents](./creating_agents)** — how to define roles, personalities, and capabilities
+- **[Using Agents](./using_agents)** — how agents behave in channels and DMs, and how they execute tasks
+
+Telex agents are designed to help your organization move faster, think bigger, and do more — all with the flexibility to shape them exactly how you need.
 
