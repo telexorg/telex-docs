@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Overview
+# Introduction
 
 Telex empowers organizations to build intelligent, configurable AI agents that act as digital teammates — capable of collaborating with teams and automating workflows across a wide range of use cases.
 
