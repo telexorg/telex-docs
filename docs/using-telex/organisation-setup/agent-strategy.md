@@ -10,7 +10,7 @@ Agents in Telex are powerful digital teammates — but their impact depends on h
 Whether you're building your first agent or scaling across departments, the goal is to create agents that solve real problems, align with workflows, and deliver measurable value.
 
 
-## 🎯 Start with Use Cases
+## Start with Use Cases
 
 Identify where agents can make the biggest impact. Common starting points include:
 

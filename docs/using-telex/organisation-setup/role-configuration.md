@@ -1,9 +1,9 @@
 ---
 sidebar_position: 3
-title: Role Configuration
+title: Roles and Permission
 ---
 
-# Role Configuration
+# Roles & Permission
 
 Telex uses a role-based access model to help organizations manage permissions, maintain control, and define how users interact with agents and workspace features. This page outlines each role and the actions it enables.
 
@@ -69,17 +69,17 @@ Can:
 - View channels only.
 
 
-## 🔐 Role Impact on Agent Interaction
+## Role Impact on Agent Interaction
 
 - **Creating Agents**: Reserved for Administrators and Managers.
 - **Using Agents in DMs**: Depends on role and workspace permissions.
 - **Mentioning Agents in Channels**: Available to Users, Managers, and Project Leads if the agent is present and permissions allow.
 
-## 🧩 Assigning Roles
+## Assigning Roles
 
-Roles are assigned during member onboarding or updated by Administrators. Use roles to reflect team structure and maintain clarity across your workspace.
+Roles are assigned during [member invitation](invite-team) or updated by Administrators. Use roles to reflect team structure and maintain clarity across your workspace.
 
-## 🛡️ Best Practices
+## Best Practices
 
 - Limit Administrator access to trusted leads.
 - Use Manager and Project Lead roles for operational oversight.
