@@ -16,8 +16,6 @@ Telex offers flexible credit bundles to support agent usage across organizations
 | Pro Bundle        | 5,000       | $20.00  |
 | Enterprise Pack   | 10,000      | $35.00 |
 
-The current exchange rate is **$1.00 = 4 AI Credits**.
-
 
 ## Where to Find Packages
 
