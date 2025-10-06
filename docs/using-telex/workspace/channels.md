@@ -62,6 +62,6 @@ To create a new channel:
 ## 🔗 Related Sections
 
 - [Threads](./threads.md)
-- [Direct Messages](./dms.md)
-- [Agents (UI)](../agents/index.md)
-- [Workspace Settings](./settings.md)
+- [Direct Messages](./direct-messages.md)
+- [Agents (UI)](../../Agents/intro.md)
+- [Workspace Settings](./workspace-setup.md)

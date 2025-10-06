@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 4
 title: Viewing Invoices
 ---
 
@@ -45,6 +45,5 @@ Below is an image of the invoice
 
 ### Next Steps
 
-- [Updating Payment Info](./updating-payment-info)
-- [Billing Overview](./billing-overview)
-- [Buying AI Credits](./ai-credits/buying-credits)
+- [Billing Overview](../overview.md)
+- [Buying AI Credits](../ai-credits/credit-package.md)

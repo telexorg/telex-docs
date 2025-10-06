@@ -47,6 +47,6 @@ If a payment fails:
 
 ### Next Steps
 
-- [Buying Credits](../ai-credits/buying-credits)
-- [Pricing Plans](../pricing-plans)
-- [Viewing Invoices](../viewing-invoices)
+- [Buying Credits](../ai-credits/credit-package.md)
+- [Pricing Plans](../pricing-plan.md)
+- [Viewing Invoices](./invoices.md)

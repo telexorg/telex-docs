@@ -48,6 +48,6 @@ All members of a channel can see and interact with agents added to that space. R
 
 ### Related Topics
 
-- [Using Agents](./using_agents.md)
-- [In Direct Messages](./in_direct_messages.md)
-- [Agent Behavior and Response](./agent_behavior.md)
+- [Using Agents](./overview.md)
+- [In Direct Messages](./interaction-dm.md)
+- [Agent Behavior and Response](./agent-behaviour.md)

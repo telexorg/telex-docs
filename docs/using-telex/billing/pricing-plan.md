@@ -63,6 +63,6 @@ Your new plan takes effect immediately and will be reflected in your usage dashb
 
 ### Next Steps
 
-- [Making a Payment](./payment-transactions/making-payment)
-- [Buying AI Credits](./ai-credits/buying-credits)
+- [Making a Payment](./payment-transactions/making-payment.md)
+- [Buying AI Credits](./ai-credits/credit-package.md)
 - [Billing Overview](./overview)

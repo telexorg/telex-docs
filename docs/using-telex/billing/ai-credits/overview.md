@@ -44,7 +44,4 @@ Your workspace includes:
 
 ### Next Steps
 
-- [Credit Packages](./credit-packages)  
-- [Monitoring Usage](./monitoring-usage)  
-- [Auto-Renew & Top-Up](./auto-renew-top-up)  
-- [Understanding Credit Costs](./credit-costs) *(coming soon)*
+- [Credit Packages](./credit-package.md)

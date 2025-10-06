@@ -39,10 +39,10 @@ Once you've selected a package:
 
 - Click the **Pay** button (e.g. “Pay $5.00 • 4 AI Credits”)
 - You’ll be redirected to the standard payment flow  
-- [Learn more about making a payment](../payment-transactions/making-a-payment)
 
 Credits are added instantly and reflected in your balance.
 
+[Learn more about payments](../payment-transactions/how-payment-work.md)
 
 ## Tips for Choosing a Package
 
@@ -55,7 +55,4 @@ Monitor your usage to determine when to top up or scale.
 ---
 
 ### Next Steps
-
-- [Monitoring Usage](./monitoring-usage)
-- [Auto-Renew & Top-Up](./auto-renew-top-up)
-- [Making a Payment](../payment-transactions/making-a-payment)
+- [Making a Payment](../payment-transactions/making-payment.md)

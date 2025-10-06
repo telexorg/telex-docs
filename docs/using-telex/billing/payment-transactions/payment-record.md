@@ -38,6 +38,6 @@ Below is an screenshot of the payment history section
 
 ### Next Steps
 
-- [Troubleshooting Failed Payments](./troubleshooting-failed-payments)
-- [Viewing Invoices](../viewing-invoices)
-- [Making a Payment](./making-a-payment)
+- [Troubleshooting Failed Payments](./troubleshooting-payment.md)
+- [Viewing Invoices](./invoices.md)
+- [Making a Payment](./making-payment.md)

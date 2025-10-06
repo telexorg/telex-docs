@@ -41,5 +41,5 @@ Introduce agents gradually to your team. Share examples, highlight wins, and enc
 
 ### Related Topics
 
-- [Agent Behavior and Response](./agent_behavior.md)
-- [Using Agents](./using_agents.md)
+- [Agent Behavior and Response](./agent-behaviour.md)
+- [Using Agents](./overview.md)

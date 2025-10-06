@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: In Direct Messages
+title: Direct Messages
 ---
 
 # Interaction in Direct Messages
@@ -43,6 +43,6 @@ Direct message support for agents is actively being developed. This page outline
 
 ### Related Topics
 
-- [Using Agents](./using_agents.md)
-- [In Channels](./in_channels.md)
-- [Agent Behavior and Response](./agent_behavior.md)
+- [Using Agents](./overview.md)
+- [In Channels](./interaction-channel.md)
+- [Agent Behavior and Response](./agent-behaviour.md)

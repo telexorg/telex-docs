@@ -32,5 +32,6 @@ Once created, your agent is ready to collaborate in channels or direct messages,
 
 
 ### Next Steps
-- [Creating Agents](./creating_agents)
-- [Using Agents](./using_agents)
+- [Create you first Agents](./create_agents.md)
+- [Add Tasks to Agents](./assigning-task.md)
+- [Add Skills to Agents](./agent-skills.md)

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 title: Troubleshooting Failed Payments
 ---
 
@@ -36,7 +36,7 @@ If a payment fails during checkout, Telex provides clear indicators and retry op
    - Confirm authorization for online or recurring payments
 
 
-## 📞 When to Contact Support
+## When to Contact Support
 
 If the issue persists:
 
@@ -52,6 +52,5 @@ Support can help verify the issue and guide you through resolution.
 
 ### Next Steps
 
-- [Making a Payment](./making-a-payment)
-- [Payment History](./payment-history)
-- [Updating Payment Info](../updating-payment-info)
+- [Making a Payment](./making-payment.md)
+- [Payment History](./payment-record.md)

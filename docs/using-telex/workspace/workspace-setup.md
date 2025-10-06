@@ -29,7 +29,7 @@ Assign initial roles to key team members:
 - **Contributors**: Can interact with agents and participate in channels.
 - **Members**: Can view and engage, but may have limited creation permissions.
 
-Refer to [Roles & Permissions](./roles_permissions.md) for a full breakdown.
+Refer to [Roles & Permissions](../organisation-setup/role-permission.md) for a full breakdown.
 
 ## Workspace Defaults
 
@@ -44,5 +44,5 @@ These defaults help streamline onboarding and ensure consistency across teams.
 
 ### Next Steps
 
-- [Role Configuration](./roles_permissions.md)
-- [Agent Strategy](./agent_strategy.md)
+- [Role Configuration](../organisation-setup/role-permission.md)
+- [Agent Strategy](../organisation-setup/agent-strategy.md)

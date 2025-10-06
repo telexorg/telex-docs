@@ -59,5 +59,5 @@ To start a thread:
 
 - [Channels](./channels)
 - [Direct Messages](./direct-messages)
-- [Agents (UI)](../agents/overview)
-- [Notifications](../telex-developers/notifications/overview)
+- [Agents (UI)](../../Agents/intro)
+- [Notifications](../../telex-developers/notifications/overview)

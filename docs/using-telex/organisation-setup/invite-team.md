@@ -52,7 +52,7 @@ When inviting users, you can assign one of the following roles:
 | **User**          | Read & write | Create channels, comment, invite |
 | **Guest**         | Read-only | View channels only |
 
-Refer to [Role Configuration](./roles_permissions.md) for a full breakdown.
+Refer to [Role Configuration](./role-permission.md) for a full breakdown.
 
 
 ## Best Practices
@@ -66,6 +66,5 @@ Refer to [Role Configuration](./roles_permissions.md) for a full breakdown.
 
 ### Next Steps
 
-- [Role Configuration](./roles_permissions.md)
-- [Workspace Setup](./workspace_setup.md)
-- [Team Rollout](./team_rollout.md)
+- [Role and permission](./role-permission.md)
+- [Governance and Maintenance](./governance.md)

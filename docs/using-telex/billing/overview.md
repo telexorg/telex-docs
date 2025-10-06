@@ -51,8 +51,7 @@ Telex billing includes:
 
 ### Explore Billing Features
 
-- [Pricing Plans](./pricing-plans)
-- [Buying AI Credits](./ai-credits/buying_credits)
-- [Making a Payment](./making-payment)
-- [Viewing Invoices](./viewing-invoices)
-- [Updating Payment Info](./updating-payment-info)
+- [Pricing Plans](./pricing-plan.md)
+- [Buying AI Credits](./ai-credits/credit-package.md)
+- [Making a Payment](./payment-transactions/making-payment.md)
+- [Viewing Invoices](./payment-transactions/invoices.md)

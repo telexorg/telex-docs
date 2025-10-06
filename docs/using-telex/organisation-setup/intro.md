@@ -70,6 +70,6 @@ Keep things running smoothly with regular check-ins:
 
 ### Next Steps
 
-- [Roles & Permissions](./roles_permissions.md)
-- [Creating Agents](../getting_started_with_agents/creating_agents.md)
-- [Best Practices](../getting_started_with_agents/using_agents/best_practices.md)
+- [Roles & Permissions](./role-permission.md)
+- [Invite team members](./invite-team.md)
+- [Creating Agents](../../Agents/creating-agent/overview.md)

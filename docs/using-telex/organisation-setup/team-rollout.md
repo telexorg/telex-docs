@@ -63,6 +63,6 @@ Use this insight to refine prompts, adjust roles, and plan future agents.
 
 ### Next Steps
 
-- [Governance & Maintenance](./governance_maintenance.md)
-- [Inviting Team Members](./inviting_team_members.md)
-- [Agent Strategy](./agent_strategy.md)
+- [Governance & Maintenance](./governance.md)
+- [Inviting Team Members](./invite-team.md)
+- [Agent Strategy](./agent-strategy.md)
