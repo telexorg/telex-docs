@@ -46,7 +46,6 @@ Once submitted, Telex AI activates the agent which will be operating based on th
 
 
 ### Next Steps
-- **[Task List](./assigning-task.md)**: Define what the agent should do  
-- **[Skills](./agent-skills.md)**: Equip the agent with tools to execute tasks
-- **[Prompts](./prompts.md)**: Add a prompt to guide the agents behavior or personality
-
+- **Task List**: Define what the agent should do  
+- **Skills**: Choose capabilities the agent will use to execute tasks
+- **JSON Workflow**: Set a worlflow that connects with external systems like N8N tools and custom A2A systems like Mastra
