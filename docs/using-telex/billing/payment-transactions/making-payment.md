@@ -70,6 +70,6 @@ Once your details are filled in:
 
 ### Next Steps
 
-- [How Payments Work](./how-payments-work)  
-- [Troubleshooting Failed Payments](./troubleshooting-failed-payments)  
-- [Credit Packages](../ai-credits/credit-packages)
+- [How Payments Work](./how-payment-work.md)  
+- [Troubleshooting Failed Payments](./troubleshooting-payment.md)  
+- [Credit Packages](../ai-credits/credit-package.md)

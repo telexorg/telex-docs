@@ -25,12 +25,7 @@ To create an AI agent, log into your organization and locate the **AI Coworker**
 - **Colleague Title**: A short label describing its role (e.g. “Sales Monitor”)
 
 ### 2. Write the Job Description
-This is the **system prompt** — the agent’s core instruction set.
-
-Example:  
-> “You are a resourceful and attentive assistant who helps me stay informed and organized. You proactively surface relevant updates, summarize key information, and communicate clearly and concisely. Always prioritize clarity, usefulness, and speed. If you're unsure about something, ask rather than assume.”
-
-Telex will automatically parse this into a structured system prompt that guides your agent’s behavior.
+This is a brief description of the agent’s role.
 
 ### 3. Choose a Tone
 Select how the agent communicates:
@@ -47,7 +42,7 @@ Control who can use or view the agent:
 - **Private**: Restricted to specific users or Admins  
 
 ### 6. Click “Create Colleague”
-Once submitted, Telex AI activates the agent which will be operating based on the job description you defined
+Once submitted, Telex AI activates the agent which will be operating based on the job description you defined. At this point the agent will be available for chat based conversation but won't be able to perform any tasks yet. The next thing to do would be to configure the agent with a task list, a list of skills that will give him the capabilities to do the task and system prompt that will guide it's behaviour.
 
 
 ### Next Steps

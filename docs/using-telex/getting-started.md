@@ -33,4 +33,4 @@ Once your organization is set up, you can create and configure agents with task 
 ![Create channel and send first webhooks](/gif/create-first-channel-and-send-first-webhook.gif) -->
 ### Next Steps
 
-Explore more about agents in [Agent Overview](../Agents/overview)
+Explore more about [Agents](../Agents/intro.md)

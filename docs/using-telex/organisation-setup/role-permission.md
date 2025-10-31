@@ -77,7 +77,7 @@ Can:
 
 ## Assigning Roles
 
-Roles are assigned during [member invitation](invite-team) or updated by Administrators. Use roles to reflect team structure and maintain clarity across your workspace.
+Roles are assigned during [member invitation](invite-team.md) or updated by Administrators. Use roles to reflect team structure and maintain clarity across your workspace.
 
 ## Best Practices
 
@@ -91,6 +91,5 @@ Roles are assigned during [member invitation](invite-team) or updated by Adminis
 
 ### Next Steps
 
-- [Workspace Setup](./workspace_setup.md)
-- [Agent Strategy](./agent_strategy.md)
-- [Using Agents](../getting_started_with_agents/using_agents.md)
+- [Workspace Setup](../workspace/intro.md)
+- [Agents](../../Agents/intro.md)

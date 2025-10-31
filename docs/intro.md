@@ -58,6 +58,6 @@ Skills can be internal utilities, external APIs, or even LLM-powered sub-agents 
 
 ### Next Steps
 
-- Check out how you can [Get Started](./using-telex/getting-started)
+- Learn all about [Using Telex](./using-telex/getting-started)
 
-- Learn how you can [Create an Agent](./Agents/overview)
+- [Get started with Agents](./Agents/intro.md)

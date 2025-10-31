@@ -41,6 +41,6 @@ Agents do not require special commands. Just speak naturally, and they’ll resp
 
 ### Related Topics
 
-- [Using Agents](./using_agents.md)
-- [In Channels](./in_channels.md)
-- [In Direct Messages](./in_direct_messages.md)
+- [Using Agents](./overview.md)
+- [In Channels](./interaction-channel.md)
+- [In Direct Messages](./interaction-dm.md)

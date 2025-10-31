@@ -27,7 +27,7 @@ As your team changes, so should your access model:
 - Reassign roles for new hires or shifting teams
 - Remove inactive users to maintain security and clarity
 
-Refer to [Role Configuration](./roles_permissions.md) for guidance.
+Refer to [Role Configuration](./role-permission.md) for guidance.
 
 
 ## Maintain Agent Configuration
@@ -63,6 +63,6 @@ Governance isn’t just top-down — involve your team:
 
 ### Next Steps
 
-- [Team Rollout](./team_rollout.md)
-- [Agent Behavior and Response](../getting_started_with_agents/using_agents/agent_behavior.md)
-- [Creating Agents](../getting_started_with_agents/creating_agents.md)
+- [Team Rollout](./team-rollout.md)
+- [Agent Behavior and Response](../../Agents/using-agent/agent-behaviour.md)
+- [Creating Agents](../../Agents/creating-agent/create_agents.md)

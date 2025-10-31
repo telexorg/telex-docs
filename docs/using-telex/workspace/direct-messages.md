@@ -59,4 +59,4 @@ To start a new DM:
 
 - [Channels](./channels.md)
 - [Threads](./threads.md)
-- [Agents (UI)](../agents/index.md)
+- [Agents (UI)](../../Agents/intro.md)

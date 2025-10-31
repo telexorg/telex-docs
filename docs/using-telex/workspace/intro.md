@@ -29,6 +29,6 @@ Whether you're part of a small team or a large organization, your workspace is w
 ## 🔗 Related Sections
 
 - [Channels](./channels.md)
-- [Direct Messages](./dms.md)
+- [Direct Messages](./direct-messages.md)
 - [Threads](./threads.md)
-- [Workspace Settings](./settings.md)
+- [Workspace Settings](./workspace-setup.md)
